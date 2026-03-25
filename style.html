@@ -1,0 +1,41 @@
+<head></head>
+<span id="one">one</span><!--
+--><span id="two">two</span><!--
+--><span id="three">three</span>
+<br>
+
+<div class="container">
+    One Two Three
+</div>
+
+<style>
+    #one{background-color: blue;
+        padding: 5px;
+        border: solid;
+        border-width: 2px;
+        border-color: red;
+        width: 50px;
+        font-style: italic;
+        font-weight: 400;
+    }
+    #two{background-color: aqua;
+        margin: 4px;
+    }
+    #three{background-color: blueviolet;
+    }
+    
+</style>
+<style>
+    .container{
+        display: flexbox;
+        background-color: pink;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+    }
+    .container > div {
+        background-color: yellow;
+        margin: 5px;
+    }
+</style>
