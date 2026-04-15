@@ -1,67 +1,56 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Trang chủ Đặng Đình Nguyên</title>
-        <style>
-            .full-img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover; 
-            }
-        </style>
+        <title>Đăng Nhập</title>
     </head>
-    <body>
-        <audio autoplay loop>
-            <source src="duong-dan-file-nhac.mp3" type="audio/mpeg">
-            Trình duyệt của bạn không hỗ trợ thẻ audio.
-        </audio>
-        <table border="1" width="100%" height="1000">
+    <body bgcolor="#f0f0f0">
+
+        <br><br>
+
+        <table border="1" width="400" align="center" bgcolor="white" cellpadding="10" cellspacing="0">
+
             <tr>
-                <td colspan="2" height="150" style="padding: 0; background-image: url('vozer.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f5e6c8;">
-                </td> 
-            </tr>
-            </tr>
-            <tr>
-                <td colspan="2" height="30" bgcolor="pink" align="center">
-                    <a href="https://www.canva.com/design/DAHGLuvhyy0/tuayaHWW-fKaJzEw9MgQ3A/view" target="main" style="margin: 0 15px; text-decoration: none; color: black; font-weight: bold;">Trang Chủ</a>
-                    <a href="portfolio.html" target="main" style="margin: 0 15px; text-decoration: none; color: black; font-weight: bold;">Giới Thiệu</a>
-                    <a href="style.html" target="main" style="margin: 0 15px; text-decoration: none; color: black; font-weight: bold;">Liên Hệ</a>
-                    
+                <td colspan="2" align="center" bgcolor="pink" height="50">
+                    <h2>ĐĂNG NHẬP</h2>
                 </td>
             </tr>
-            <td width="30%" bgcolor="yellow" valign="top">
-                <strong>DANH SÁCH NHẠC</strong><br><br>
-                <a href="https://www.youtube.com/embed/gSxWbljJP74?si=XsnqPczmxeo0QG8_" target="main">Nhạc Anh Ộ I</a><br>
-                <a href="Introduction to Data Structures - (480p).mp4" target="main">Data - Structure & Algorithms</a><br>
-                <a href="https://www.youtube.com/embed/Uqxa56VsL1M?si=Lw9Bgj7gv5a8k8kT" target="main">Fung Thank Do</a> <br><br><br>
-                <strong>DANH SÁCH PHIM</strong><br><br>
-                <a href="https://www.youtube.com/embed/Uqxa56VsL1M?si=Lw9Bgj7gv5a8k8kT" target="main">Phim KungFu Phở</a><br>
-                <a href="https://www.youtube.com/embed/Uqxa56VsL1M?si=Lw9Bgj7gv5a8k8kT" target="main">John Wick</a><br>
-                <a href="https://www.youtube.com/embed/Uqxa56VsL1M?si=Lw9Bgj7gv5a8k8kT" target="main">Bố Già</a><br><br><br>
 
-                <strong>DANH SÁCH SÁCH</strong><br><br>
-                <a href="https://www.youtube.com/embed/Uqxa56VsL1M?si=Lw9Bgj7gv5a8k8kT" target="main">Chủ Nghĩa Khắc Kỷ</a><br>
-                <a href="https://www.youtube.com/embed/Uqxa56VsL1M?si=Lw9Bgj7gv5a8k8kT" target="main">Marx-Lenin</a><br>
-                <a href="https://www.youtube.com/embed/Uqxa56VsL1M?si=Lw9Bgj7gv5a8k8kT" target="main">Chủ nghĩa xã hội</a><br><br><br>
-                </a><br>
-                
-            </td>
-
-            <td width="85%" bgcolor="aqua">
-            <iframe name="main" width="100%" height="100%" frameborder="0" src="https://www.canva.com/design/DAHGLuvhyy0/tuayaHWW-fKaJzEw9MgQ3A/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-                    Trình duyệt của bạn không hỗ trợ iframe.
-                </iframe>
-            </td>
             <tr>
-                <td colspan="2" height="7%" bgcolor="lightblue" align="center">
-                    <div style="font-family: monospace; font-weight: bold; line-height: 1.6;">
-                        ĐẶNG ĐÌNH NGUYÊN <br>
-                        110125113 <br>
-                        ĐẠI HỌC TRÀ VINH <br>
-                        TRƯỜNG KỸ THUẬT VÀ CÔNG NGHỆ
-                    </div>
+                <td width="35%" align="right"><b>Email:</b></td>
+                <td>
+                    <input type="email" name="email" placeholder="Nhập email" size="25">
                 </td>
             </tr>
+
+            <tr>
+                <td align="right"><b>Mật khẩu:</b></td>
+                <td>
+                    <input type="password" name="matkhau" placeholder="Nhập mật khẩu" size="25">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="checkbox" name="ghonho"> Ghi nhớ đăng nhập
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="Đăng Nhập" onclick="window.location.href='main.html'" style="background-color: pink; font-weight: bold; padding: 5px 20px; cursor: pointer;">
+                    &nbsp;&nbsp;
+                    <input type="reset" value="Xóa" style="padding: 5px 20px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center" bgcolor="#f9f9f9">
+                    Chưa có tài khoản? 
+                    <a href="register.html">Đăng ký ngay</a>
+                </td>
+            </tr>
+
         </table>
+
     </body>
 </html>
