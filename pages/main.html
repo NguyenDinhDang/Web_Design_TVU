@@ -65,6 +65,32 @@
                 background-color: pink;
                 text-align: center;
             }
+            .sidebar {
+                width: 20%; /* Bạn có thể chỉnh 15% hoặc 20% tùy ý */
+                background-color: #f8f9fa !important;
+                vertical-align: top;
+                padding: 15px;
+                border-right: 1px solid #ddd;
+                /* Nếu danh sách quá dài thì chỉ cuộn riêng trong cột này */
+                overflow-y: auto; 
+            }
+
+            .sidebar a {
+                display: block;
+                padding: 8px 12px;
+                margin: 4px 0;
+                color: #555;
+                text-decoration: none;
+                border-radius: 6px;
+                font-size: 0.9rem;
+                transition: 0.3s;
+            }
+
+            .sidebar a:hover {
+                background-color: pink;
+                color: white;
+                padding-left: 20px;
+            }
         </style>
     </head>
     <body>
