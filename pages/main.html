@@ -4,173 +4,115 @@
     <meta charset="UTF-8">
     <title>Dashboard - Đặng Đình Nguyên</title>
     <style>
-        /* 1. Thiết lập biến màu để dễ quản lý */
         :root {
             --primary: #ffc0cb; /* Pink */
-            --primary-dark: #ff8da1;
-            --bg-sidebar: #ffffff;
-            --bg-main: #f0f2f5;
-            --text-main: #1c1e21;
-            --text-sub: #606770;
-            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --sidebar-width: 220px; /* Thu nhỏ sidebar lại tại đây */
+            --header-height: 100px;
+            --nav-height: 50px;
+            --footer-height: 40px;
+            --bg-main: #f8f9fa;
         }
 
         * { box-sizing: border-box; }
-
         html, body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            width: 100vw;
+            margin: 0; padding: 0;
+            height: 100vh; width: 100vw;
             overflow: hidden;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg-main);
         }
 
-        /* 2. Bố cục bảng full màn hình */
-        .main-layout {
-            width: 100%;
-            height: 100%;
+        /* Bố cục Table chuẩn: Chiếm trọn 100% màn hình */
+        .layout-table {
+            width: 100%; height: 100%;
             border-collapse: collapse;
-            table-layout: fixed;
+            table-layout: fixed; /* Ép Sidebar không được giãn ra thêm */
         }
 
-        /* 3. Header cải tiến */
+        /* Header: Giảm chiều cao để tăng diện tích nội dung */
         .header-cell {
-            height: 12vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/vozer.jpg');
+            height: var(--header-height);
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('assets/images/vozer.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
-            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
+            border-bottom: 2px solid pink;
         }
 
         .logout-btn {
-            position: absolute;
-            top: 50%;
-            right: 30px;
-            transform: translateY(-50%);
-            background: #ff4757;
-            color: white;
-            padding: 8px 20px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 13px;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            position: absolute; top: 15px; right: 20px;
+            color: red; border: 1px solid red;
+            padding: 5px 15px; text-decoration: none;
+            border-radius: 20px; font-size: 12px; font-weight: bold;
         }
-        .logout-btn:hover { background: #ff6b81; transform: translateY(-50%) scale(1.05); }
 
-        /* 4. Thanh Nav mượt mà */
-        .nav-bar {
-            height: 6vh;
+        /* Sidebar: Thu nhỏ và tinh gọn */
+        .sidebar-cell {
+            width: var(--sidebar-width);
             background-color: white;
-            border-bottom: 1px solid #ddd;
-            text-align: center;
-        }
-        .nav-bar a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
-            margin: 0 20px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: 0.2s;
-        }
-        .nav-bar a:hover { background-color: var(--primary); color: white; }
-
-        /* 5. Sidebar tinh tế */
-        .sidebar {
-            width: 250px; /* Độ rộng cố định cho đẹp */
-            background-color: var(--bg-sidebar);
             vertical-align: top;
-            border-right: 1px solid #ddd;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+            border-right: 1px solid #eee;
+            padding: 10px;
         }
 
-        .sidebar-content {
-            height: 77vh; /* Chiều cao tự tính toán */
+        .sidebar-nav {
+            height: calc(100vh - var(--header-height) - var(--nav-height) - var(--footer-height));
             overflow-y: auto;
-            padding: 20px 15px;
         }
 
-        .sidebar-content strong {
+        .sidebar-nav strong {
             display: block;
-            margin: 20px 0 10px 10px;
+            margin: 15px 0 5px 10px;
             font-size: 11px;
-            color: var(--text-sub);
+            color: #888;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
-        .sidebar-content a {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            margin: 4px 0;
-            color: var(--text-main);
+        .sidebar-nav a {
+            display: block;
+            padding: 10px 15px;
+            margin: 2px 0;
+            color: #444;
             text-decoration: none;
-            border-radius: 10px;
             font-size: 14px;
-            font-weight: 500;
+            border-radius: 8px;
             transition: 0.2s;
         }
 
-        .sidebar-content a:hover {
+        .sidebar-nav a:hover {
             background-color: #fff0f3;
-            color: var(--primary-dark);
+            color: pink;
             padding-left: 20px;
         }
 
-        /* Dấu gạch hồng trang trí */
-        .sidebar-content a::before {
-            content: '';
-            width: 4px;
-            height: 0;
-            background: var(--primary);
-            margin-right: 0;
-            transition: 0.2s;
-            border-radius: 2px;
-        }
-        .sidebar-content a:hover::before {
-            height: 15px;
-            margin-right: 10px;
-        }
-
-        /* 6. Khu vực nội dung */
+        /* Content Area: Không gian tối đa */
         .content-cell {
-            padding: 15px;
             background-color: var(--bg-main);
+            padding: 15px;
+            vertical-align: top;
         }
 
-        .iframe-container {
-            border: 1px solid #eee; /* Thêm viền mảnh cho khung nội dung */
-            transition: all 0.5s ease;
+        .iframe-wrapper {
+            width: 100%; height: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #eee;
         }
 
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* 7. Footer gọn gàng */
-        .footer-cell {
-            height: 5vh;
-            background-color: white;
-            border-top: 1px solid #ddd;
-            color: var(--text-sub);
-            text-align: center;
-            font-size: 11px;
-            letter-spacing: 0.5px;
-        }
-        .sidebar-content a.active {
-            background-color: #fff0f3;
-            color: var(--primary-dark);
-            border-left: 4px solid var(--primary);
-        }
+        /* Menu ngang và Footer */
+        .nav-bar { height: var(--nav-height); background: pink; text-align: center; }
+        .nav-bar a { text-decoration: none; color: #333; font-weight: 500; margin: 0 15px; }
+        .footer-cell { height: var(--footer-height); background: white; text-align: center; font-size: 11px; color: #888; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
-    <table class="main-layout">
+    <table class="layout-table">
         <tr>
             <td colspan="2" class="header-cell">
                 <a href="../index.html" class="logout-btn">ĐĂNG XUẤT</a>
@@ -179,40 +121,36 @@
 
         <tr>
             <td colspan="2" class="nav-bar">
-                <a href="home.html" target="main">Trang chủ</a>
-                <a href="portfolio.html" target="main">Hồ sơ năng lực</a>
+                <a href="portfolio.html" target="main">Hồ sơ</a>
                 <a href="myproject.html" target="main">Dự án</a>
                 <a href="style.html" target="main">Liên hệ</a>
             </td>
         </tr>
 
         <tr>
-            <td class="sidebar">
-                <div class="sidebar-content">
-                    <strong>Âm nhạc</strong>
-                    <a href="#" target="main">Nhạc trẻ</a>
-                    <a href="#" target="main">Bolero</a>
-                    <a href="#" target="main">Lofi Chill</a>
-
-                    <strong>Điện ảnh</strong>
-                    <a href="#" target="main">John Wick</a>
-                    <a href="#" target="main">Bố Già</a>
+            <td class="sidebar-cell">
+                <div class="sidebar-nav">
+                    <strong>Giải trí</strong>
+                    <a href="link_nhac" target="main">Âm nhạc</a>
+                    <a href="link_phim" target="main">Phim ảnh</a>
 
                     <strong>Học tập</strong>
-                    <a href="#" target="main">Chủ nghĩa Khắc kỷ</a>
-                    <a href="#" target="main">Marx-Lenin</a>
+                    <a href="portfolio.html" target="main">Hồ sơ năng lực</a>
+                    <a href="myproject.html" target="main">Dự án cá nhân</a>
+                    <a href="analysis.html" target="main">Phân tích</a>
                 </div>
             </td>
+
             <td class="content-cell">
-                <div class="iframe-container">
-                    <iframe name="main" src="https://www.canva.com/design/DAHGLuvhyy0/tuayaHWW-fKaJzEw9MgQ3A/view?embed"></iframe>
+                <div class="iframe-wrapper">
+                    <iframe name="main" src="portfolio.html"></iframe>
                 </div>
             </td>
         </tr>
 
         <tr>
             <td colspan="2" class="footer-cell">
-                © 2026 ĐẶNG ĐÌNH NGUYÊN | MSSV: 110125113 | LỚP: DA25TTD
+                © 2026 ĐẶNG ĐÌNH NGUYÊN - DA25TTD - Đại Học Trà Vinh
             </td>
         </tr>
     </table>
