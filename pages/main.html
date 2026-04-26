@@ -1,151 +1,187 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Trang chủ Đặng Đình Nguyên</title>
-        <style>
-            .full-img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover; 
-            }
-            td[width="30%"] {
-                background-color: #f8f9fa !important; /* Màu xám rất nhạt */
-                padding: 20px !important;
-                border-right: 1px solid #ddd;
-            }
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ Đặng Đình Nguyên</title>
+    <style>
+        /* 1. Thiết lập chung: Chặn cuộn toàn trang */
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* Không cho cả trang cuộn */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-            td[width="30%"] strong {
-                display: block;
-                margin-top: 15px;
-                color: #333;
-                border-left: 4px solid pink;
-                padding-left: 10px;
-                font-size: 14px;
-            }
+        /* 2. Cấu trúc Bảng chính: Full màn hình */
+        .main-layout {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
 
-            td[width="30%"] a {
-                display: block;
-                padding: 8px 12px;
-                margin: 5px 0;
-                color: #555;
-                text-decoration: none;
-                border-radius: 5px;
-                transition: 0.3s;
-                font-size: 13px;
-            }
+        /* 3. Header: Cố định chiều cao */
+        .header-cell {
+            height: 18vh;
+            background-image: url('assets/images/vozer.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #f5e6c8;
+            position: relative;
+            border-bottom: 2px solid pink;
+        }
 
-            td[width="30%"] a:hover {
-                background-color: pink;
-                color: white;
-                padding-left: 20px; /* Hiệu ứng trượt nhẹ khi hover */
-            }
-            html, body {
-                margin: 0;
-                padding: 0;
-                height: 100vh;
-                width: 100vw;
-                overflow: hidden; /* Chặn cuộn chuột */
-                font-family: 'Segoe UI', Arial, sans-serif;
-            }
-            .main-table {
-                width: 100%;
-                height: 100vh; /* Luôn cao bằng đúng màn hình thiết bị */
-                border-collapse: collapse;
-                table-layout: fixed; /* Giữ cố định tỉ lệ các cột */
-            }
-            .header-cell {
-                height: 15vh; /* Chiếm 15% chiều cao màn hình */
-                background-image: url('assets/images/vozer.jpg');
-                background-size: cover;
-                background-position: center;
-                position: relative;
-            }
-            .nav-bar {
-                height: 5vh; /* Chiếm 5% chiều cao */
-                background-color: pink;
-                text-align: center;
-            }
-            .sidebar {
-                width: 20%; /* Bạn có thể chỉnh 15% hoặc 20% tùy ý */
-                background-color: #f8f9fa !important;
-                vertical-align: top;
-                padding: 15px;
-                border-right: 1px solid #ddd;
-                /* Nếu danh sách quá dài thì chỉ cuộn riêng trong cột này */
-                overflow-y: auto; 
-            }
+        .logout-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            background-color: rgba(255, 0, 0, 0.7);
+            padding: 5px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .logout-btn:hover { background-color: red; }
 
-            .sidebar a {
-                display: block;
-                padding: 8px 12px;
-                margin: 4px 0;
-                color: #555;
-                text-decoration: none;
-                border-radius: 6px;
-                font-size: 0.9rem;
-                transition: 0.3s;
-            }
+        /* 4. Thanh Navigation */
+        .nav-bar {
+            height: 6vh;
+            background-color: pink;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+        .nav-bar a:hover { color: white; }
 
-            .sidebar a:hover {
-                background-color: pink;
-                color: white;
-                padding-left: 20px;
-            }
-            .content-cell {
-                width: 80%;
-                height: 80vh; /* Chiếm 80% chiều cao còn lại */
-                background-color: white;
-            }
+        /* 5. Sidebar: Cho phép cuộn nếu danh sách quá dài */
+        .sidebar {
+            width: 20%;
+            background-color: #f8f9fa;
+            vertical-align: top;
+            padding: 0; /* Để padding vào div bên trong */
+            border-right: 1px solid #ddd;
+        }
 
-            iframe {
-                width: 100%;
-                height: 100%;
-                border: none;
-            }
-            .footer-cell {
-                height: 5vh;
-                background-color: #333;
-                color: white;
-                text-align: center;
-                font-size: 12px;
-            }
-        </style>
-    </head>
-    <body>
-        <audio autoplay loop>
-            <source src="duong-dan-file-nhac.mp3" type="audio/mpeg">
-            Trình duyệt của bạn không hỗ trợ thẻ audio.
-        </audio>
-        <table class="main-table">
-            <tr>
-                <td colspan="2" class="header-cell">
-                    <a href="index.html" style="position:absolute; top:10px; right:10px; color:red; border:1px solid red; padding:5px; text-decoration:none; border-radius:5px;">Đăng Xuất</a>
-                </td>
-            </tr>
+        .sidebar-scroll {
+            height: 71vh; /* Chiều cao còn lại sau khi trừ header/nav/footer */
+            overflow-y: auto; /* Chỉ cuộn riêng cột này */
+            padding: 20px;
+        }
 
-            <tr>
-                <td colspan="2" class="nav-bar">
-                    <a href="portfolio.html" target="main">Hồ sơ năng lực</a> | 
-                    <a href="myproject.html" target="main">Dự án</a>
-                </td>
-            </tr>
+        .sidebar-scroll strong {
+            display: block;
+            margin-top: 15px;
+            color: #333;
+            border-left: 4px solid pink;
+            padding-left: 10px;
+            font-size: 14px;
+        }
 
-            <tr>
-                <td class="sidebar">
+        .sidebar-scroll a {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            color: #555;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .sidebar-scroll a:hover {
+            background-color: pink;
+            color: white;
+            padding-left: 20px;
+        }
+
+        /* 6. Nội dung chính: Iframe */
+        .content-cell {
+            width: 80%;
+            height: 71vh;
+            background-color: white;
+            vertical-align: top;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 7. Footer */
+        .footer-cell {
+            height: 5vh;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <audio autoplay loop>
+        <source src="duong-dan-file-nhac.mp3" type="audio/mpeg">
+    </audio>
+
+    <table class="main-layout">
+        <tr>
+            <td colspan="2" class="header-cell">
+                <a href="../index.html" class="logout-btn">Đăng Xuất</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="nav-bar">
+                <a href="portfolio.html" target="main">Hồ sơ năng lực</a> | 
+                <a href="myproject.html" target="main">Dự án</a> | 
+                <a href="style.html" target="main">Liên hệ</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="sidebar">
+                <div class="sidebar-scroll">
                     <strong>DANH SÁCH NHẠC</strong>
-                    <a href="...">Nhạc trẻ</a>
-                    <a href="...">Nhạc Bolero</a>
-                    </td>
-                <td class="content-cell">
-                    <iframe name="main" src="https://www.canva.com/..."></iframe>
-                </td>
-            </tr>
+                    <a href="link-nhac-1" target="main">Nhạc trẻ</a>
+                    <a href="link-nhac-2" target="main">Nhạc Bolero</a>
+                    <a href="link-nhac-3" target="main">Lofi chill</a>
 
-            <tr>
-                <td colspan="2" class="footer-cell">
-                    MSSV: 110125113 - Đặng Đình Nguyên - DA25TTD
-                </td>
-            </tr>
-        </table>
-    </body>
+                    <strong>DANH SÁCH PHIM</strong>
+                    <a href="https://www.youtube.com/embed/Uqxa56VsL1M" target="main">John Wick</a>
+                    <a href="https://www.youtube.com/embed/Uqxa56VsL1M" target="main">Bố Già</a>
+
+                    <strong>DANH SÁCH SÁCH</strong>
+                    <a href="#" target="main">Chủ Nghĩa Khắc Kỷ</a>
+                    <a href="#" target="main">Marx-Lenin</a>
+                    <a href="#" target="main">Chủ nghĩa xã hội</a>
+                    
+                    </div>
+            </td>
+
+            <td class="content-cell">
+                <iframe name="main" src="https://www.canva.com/design/DAHGLuvhyy0/tuayaHWW-fKaJzEw9MgQ3A/view?embed"></iframe>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="footer-cell">
+                MSSV: 110125113 - Đặng Đình Nguyên - Lớp: DA25TTD
+            </td>
+        </tr>
+    </table>
+
+</body>
 </html>
