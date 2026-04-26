@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Trang chủ Đặng Đình Nguyên</title>
     <style>
-        /* 1. Ép Full màn hình 100% không thanh cuộn ngoài */
+        /* 1. Ép Full màn hình 100% */
         html, body {
             margin: 0; padding: 0;
             height: 100vh; width: 100vw;
@@ -15,7 +15,7 @@
         .main-table {
             width: 100%; height: 100vh;
             border-collapse: collapse;
-            table-layout: fixed; /* Rất quan trọng để giữ đúng tỷ lệ cột */
+            table-layout: fixed; /* Ép buộc trình duyệt tuân thủ width của cột */
         }
 
         /* 2. Header (15%) */
@@ -47,9 +47,9 @@
             text-decoration: none; margin: 0 20px;
         }
 
-        /* 4. Sidebar Vàng siêu nhỏ (10%) */
+        /* 4. Sidebar Vàng (10%) */
         .sidebar {
-            width: 10%; 
+            width: 10%; /* Cố định 10% */
             background-color: yellow; 
             vertical-align: top;
             border-right: 1px solid #ccc;
@@ -59,13 +59,14 @@
             height: 75vh; 
             overflow-y: auto; 
             padding: 10px;
+            box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều rộng */
         }
 
-        /* Thu nhỏ font chữ tiêu đề để vừa với cột 10% */
         .sidebar-scroll strong {
             display: block;
             margin-top: 10px; margin-bottom: 5px;
-            font-size: 12px;
+            font-size: 11px; /* Hạ nhẹ font để tránh tràn cột 10% */
+            word-wrap: break-word;
         }
 
         .sidebar-scroll a {
@@ -73,20 +74,23 @@
             color: blue;
             text-decoration: underline;
             margin-bottom: 6px;
-            font-size: 12px;
+            font-size: 11px;
+            word-wrap: break-word; /* Ép chữ xuống dòng nếu quá dài */
         }
         
         .sidebar-scroll a:hover { color: red; }
 
-        /* 5. Nội dung Aqua cực rộng (90%) */
+        /* 5. Nội dung Aqua (90%) */
         .content-cell {
-            width: 90%;
+            width: 90%; /* Cố định 90% */
             background-color: aqua;
             vertical-align: top;
+            padding: 0;
         }
 
         iframe {
             width: 100%; height: 100%; border: none;
+            display: block; /* Loại bỏ khoảng trống thừa bên dưới iframe */
         }
 
         /* 6. Footer (5%) */
@@ -102,7 +106,12 @@
 </head>
 <body>
 
-    <table border="1" class="main-table">
+    <table class="main-table">
+        <colgroup>
+            <col style="width: 10%;">
+            <col style="width: 90%;">
+        </colgroup>
+
         <tr>
             <td colspan="2" class="header-cell">
                 <a href="../index.html" class="logout-btn">Đăng Xuất</a>
