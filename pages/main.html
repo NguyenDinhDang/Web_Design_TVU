@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Trang chủ Đặng Đình Nguyên</title>
     <style>
-        /* Ép Full màn hình, không cho cuộn trang */
+        /* 1. Ép Full màn hình 100% không thanh cuộn ngoài */
         html, body {
             margin: 0; padding: 0;
             height: 100vh; width: 100vw;
@@ -15,10 +15,10 @@
         .main-table {
             width: 100%; height: 100vh;
             border-collapse: collapse;
-            table-layout: fixed; 
+            table-layout: fixed; /* Rất quan trọng để giữ đúng tỷ lệ cột */
         }
 
-        /* Header */
+        /* 2. Header (15%) */
         .header-cell {
             height: 15vh;
             background-color: #faebd7; 
@@ -34,7 +34,7 @@
             background-color: white;
         }
 
-        /* Thanh Menu Pink */
+        /* 3. Thanh Menu Pink (5%) */
         .nav-bar {
             height: 5vh;
             background-color: pink;
@@ -47,39 +47,40 @@
             text-decoration: none; margin: 0 20px;
         }
 
-        /* Sidebar Vàng: Đã được thu nhỏ lại 15% */
+        /* 4. Sidebar Vàng siêu nhỏ (10%) */
         .sidebar {
-            width: 15%; 
+            width: 10%; 
             background-color: yellow; 
             vertical-align: top;
             border-right: 1px solid #ccc;
         }
 
         .sidebar-scroll {
-            height: 75vh; /* Chiều cao trừ đi Header, Menu và Footer */
+            height: 75vh; 
             overflow-y: auto; 
             padding: 10px;
         }
 
+        /* Thu nhỏ font chữ tiêu đề để vừa với cột 10% */
         .sidebar-scroll strong {
             display: block;
-            margin-top: 15px; margin-bottom: 10px;
+            margin-top: 10px; margin-bottom: 5px;
+            font-size: 12px;
         }
 
         .sidebar-scroll a {
             display: block;
             color: blue;
             text-decoration: underline;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 12px;
         }
         
-        .sidebar-scroll a:hover {
-            color: red; 
-        }
+        .sidebar-scroll a:hover { color: red; }
 
-        /* Nội dung Iframe: Đã được phóng to 85% */
+        /* 5. Nội dung Aqua cực rộng (90%) */
         .content-cell {
-            width: 85%;
+            width: 90%;
             background-color: aqua;
             vertical-align: top;
         }
@@ -88,12 +89,12 @@
             width: 100%; height: 100%; border: none;
         }
 
-        /* Footer mới */
+        /* 6. Footer (5%) */
         .footer-cell {
             height: 5vh;
             background-color: #eeeeee;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             border-top: 1px solid #ccc;
         }
@@ -120,22 +121,22 @@
         <tr>
             <td class="sidebar">
                 <div class="sidebar-scroll">
-                    <strong>DANH SÁCH: NHẠC</strong>
+                    <strong>NHẠC</strong>
                     <a href="link-nhac" target="main">Nhạc Anh Ổ 1</a>
-                    <a href="link-nhac" target="main">Data - Structure & Algorithms</a>
+                    <a href="link-nhac" target="main">DSA</a>
                     <a href="link-nhac" target="main">Fung Thank Do</a>
 
                     <br>
-                    <strong>DANH SÁCH: PHIM</strong>
-                    <a href="link-phim" target="main">Phim KungFu Phở</a>
+                    <strong>PHIM</strong>
+                    <a href="link-phim" target="main">KungFu Phở</a>
                     <a href="link-phim" target="main">John Wick</a>
                     <a href="link-phim" target="main">Bố Già</a>
 
                     <br>
-                    <strong>DANH SÁCH: SÁCH</strong>
-                    <a href="link-sach" target="main">Chủ Nghĩa Khắc Kỷ</a>
+                    <strong>SÁCH</strong>
+                    <a href="link-sach" target="main">Khắc Kỷ</a>
                     <a href="link-sach" target="main">Marx-Lenin</a>
-                    <a href="link-sach" target="main">Chủ nghĩa xã hội</a>
+                    <a href="link-sach" target="main">Xã hội học</a>
                 </div>
             </td>
 
@@ -146,7 +147,7 @@
 
         <tr>
             <td colspan="2" class="footer-cell">
-                Bản quyền thuộc về Đặng Đình Nguyên © 2026 | Lớp: DA25TTD
+                Bản quyền thuộc về Đặng Đình Nguyên © 2026 | Lớp: DA25TTD | MSSV: 110125113
             </td>
         </tr>
     </table>
