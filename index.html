@@ -1,231 +1,315 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Đăng Nhập</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-                background-size: 400% 400%;
-                animation: gradient 15s ease infinite;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column; /* Để không bị lỗi khi có nội dung bên trên */
-                align-items: center;
-                justify-content: center;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng nhập | Web Design TVU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #0f172a;
+            --accent: #b91c1c;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --surface: #ffffff;
+            --page: #f6f8fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--brand);
+            background:
+                linear-gradient(180deg, rgba(15, 23, 42, 0.03), rgba(15, 23, 42, 0)),
+                var(--page);
+        }
+
+        .page-shell {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .login-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 48px 0;
+        }
+
+        .login-card,
+        .info-panel {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+        }
+
+        .login-card {
+            padding: 34px;
+        }
+
+        .info-panel {
+            height: 100%;
+            padding: 34px;
+            background:
+                linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96)),
+                var(--brand);
+            color: #ffffff;
+        }
+
+        .form-control {
+            min-height: 46px;
+            border-color: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            border-color: #334155;
+            box-shadow: 0 0 0 0.2rem rgba(15, 23, 42, 0.12);
+        }
+
+        .btn-primary {
+            min-height: 46px;
+            background: var(--brand);
+            border-color: var(--brand);
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            background: #1e293b;
+            border-color: #1e293b;
+        }
+
+        .btn-outline-secondary {
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .captcha-box {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: #f8fafc;
+            padding: 14px;
+        }
+
+        .captcha-img {
+            width: 100%;
+            max-width: 210px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        .security-item {
+            display: flex;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .security-item:last-child {
+            border-bottom: 0;
+        }
+
+        .security-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.12);
+            flex: 0 0 auto;
+        }
+
+        .social-btn {
+            min-height: 42px;
+            border-color: var(--line);
+            border-radius: 10px;
+            background: #ffffff;
+            font-weight: 600;
+        }
+
+        .social-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-note {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 13px;
+            background: #ffffff;
+        }
+
+        @media (max-width: 991.98px) {
+            .login-section {
+                padding: 28px 0;
             }
 
-            @keyframes gradient {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
+            .login-card,
+            .info-panel {
+                padding: 24px;
             }
-            table {
-                border: none !important;
-                border-collapse: collapse;
-                border-radius: 15px;
-                overflow: hidden;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                width: 450px; /* Cố định chiều rộng để không bị vỡ layout */
-                margin: 20px auto;
-            }
-            input[type="text"], input[type="password"] {
-                width: 80%;
-                padding: 10px;
-                margin: 5px 0;
-                border: 1px solid #ddd;
-                border-radius: 20px;
-                outline: none;
-            }
-            input[type="submit"], input[type="button"] {
-                background: linear-gradient(to right, #6a11cb, #2575fc);
-                color: white;
-                border: none;
-                padding: 10px 25px;
-                border-radius: 25px;
-                cursor: pointer;
-                font-weight: bold;
-            }
-            .social-container {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-                padding: 15px;
-            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <nav class="container d-flex align-items-center justify-content-between py-3">
+                <a class="d-flex align-items-center gap-2 text-decoration-none text-dark fw-bold" href="index.html">
+                    <img src="assets/images/MU.png" alt="Logo MU" class="brand-logo">
+                    <span>Web Design TVU</span>
+                </a>
+                <a href="pages/register.html" class="btn btn-sm btn-outline-secondary">Tạo tài khoản</a>
+            </nav>
+        </header>
 
-            .social-container a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-                padding: 8px;
-                border: 1px solid #eee;
-                border-radius: 8px;
-                text-decoration: none;
-                color: #333;
-                font-size: 11px;
-                background: #fff;
-                transition: 0.3s;
-            }
+        <main class="login-section">
+            <div class="container">
+                <div class="row g-4 align-items-stretch justify-content-center">
+                    <div class="col-lg-5">
+                        <section class="login-card h-100">
+                            <div class="mb-4">
+                                <span class="badge text-bg-light border mb-3">Cổng đăng nhập vào hang</span>
+                                <h1 class="h3 fw-bold mb-2">Đăng nhập hệ thống</h1>
+                                <p class="text-secondary mb-0">Ấn đăng nhập để truy cập vào menu nội bộ.</p>
+                            </div>
 
-            .social-container a:hover {
-                border-color: #e73c7e;
-                background: #fff5f8;
-                transform: scale(1.05);
-            }
-        </style>
-    </head>
-    <body bgcolor="#f0f0f0">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label fw-semibold">Email</label>
+                                    <input id="email" type="email" class="form-control" placeholder="name@example.com" autocomplete="email">
+                                </div>
 
-        <br><br>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between gap-2">
+                                        <label for="password" class="form-label fw-semibold">Mật khẩu</label>
+                                        <a href="#" class="small text-decoration-none">Quên mật khẩu?</a>
+                                    </div>
+                                    <input id="password" type="password" class="form-control" placeholder="Nhập mật khẩu" autocomplete="current-password">
+                                </div>
 
-        <table border="1" width="600" align="center" bgcolor="white" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1px solid #ccc;">
+                                <div class="captcha-box mb-3">
+                                    <label for="captcha" class="form-label fw-semibold">Xác minh CAPTCHA</label>
+                                    <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+                                        <img src="assets/images/capcha2.png" alt="Mã Captcha" class="captcha-img">
+                                        <input id="captcha" type="text" class="form-control" placeholder="Nhập kết quả">
+                                    </div>
+                                </div>
 
-            <tr>
-                <td colspan="2" align="center" bgcolor="pink" height="50">
-                    <h2 style="margin: 0;">ĐĂNG NHẬP</h2>
-                </td>
-            </tr>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="remember">
+                                        <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
+                                    </div>
+                                    <button type="reset" class="btn btn-sm btn-outline-secondary">Xóa</button>
+                                </div>
 
-            <tr>
-                <td width="30%" align="right" style="padding: 10px;"><b>Email:</b></td>
-                <td style="padding: 10px;"><input type="email" placeholder="Nhập email" style="width: 90%;"></td>
-            </tr>
-            <tr>
-                <td align="right" style="padding: 10px;"><b>Mật khẩu:</b></td>
-                <td style="padding: 10px;"><input type="password" placeholder="Nhập mật khẩu" style="width: 90%;"></td>
-            </tr>
+                                <button type="button" class="btn btn-primary w-100" onclick="window.location.href='pages/menu.html'">
+                                    Đăng nhập
+                                </button>
+                            </form>
 
-            <tr>
-                <td colspan="2" align="center" style="padding: 10px;">
-                    <label><input type="checkbox" name="ghonho"> Ghi nhớ đăng nhập</label>
-                </td>
-            </tr>
+                            <div class="text-center text-secondary small my-4">Hoặc đăng nhập nhanh</div>
 
-            <tr>
-                <td colspan="2" class="captcha-wrapper">
-                    <b style="font-size: 14px;">Mã Captcha:</b>
-                    
-                    <p class="captcha-instruction">
-                        Nhập kết quả trong đoạn code dưới đây để xác nhận TAO KHÔNG PHẢI ROBOT:
-                    </p>
+                            <div class="row g-2">
+                                <div class="col-sm-4">
+                                    <a href="pages/main.html" class="btn social-btn w-100 d-flex align-items-center justify-content-center gap-2">
+                                        <img src="https://img.icons8.com/color/24/google-logo.png" alt="">Google
+                                    </a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="pages/main.html" class="btn social-btn w-100 d-flex align-items-center justify-content-center gap-2">
+                                        <img src="https://img.icons8.com/color/24/github.png" alt="">GitHub
+                                    </a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="pages/main.html" class="btn social-btn w-100 d-flex align-items-center justify-content-center gap-2">
+                                        <img src="https://img.icons8.com/color/24/facebook.png" alt="">Facebook
+                                    </a>
+                                </div>
+                            </div>
 
-                    <nav>
-                        <img src="assets/images/capcha2.png" alt="Code Captcha" class="captcha-img">
-                        
-                        <b>Trả lời:</b> 
-                        <input type="text" name="captcha" class="captcha-input">
-                    </nav>
-                </td>
-            </tr>
+                            <p class="text-center text-secondary small mt-4 mb-0">
+                                Chưa có tài khoản?
+                                <a href="pages/register.html" class="text-decoration-none fw-semibold">Đăng ký ngay</a>
+                            </p>
+                        </section>
+                    </div>
 
-            <tr>
-                <td colspan="2" align="center" style="padding: 10px;">
-                    <input type="button" value="Đăng Nhập" onclick="window.location.href='pages/menu.html'" style="background-color: pink; font-weight: bold; padding: 5px 20px; cursor: pointer;">
-                    &nbsp;&nbsp;
-                    <input type="reset" value="Xóa" style="padding: 5px 20px;">
-                </td>
-            </tr>
+                    <div class="col-lg-6">
+                        <aside class="info-panel">
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <img src="assets/images/MU.png" alt="Logo MU" class="brand-logo">
+                                <div>
+                                    <div class="fw-bold">Enterprise Portal</div>
+                                    <div class="text-white-50 small">Web Design TVU Workspace</div>
+                                </div>
+                            </div>
 
-            <tr>
-                <td colspan="2" align="center" bgcolor="#f9f9f9" style="padding: 10px;">
-                    Chưa có tài khoản? 
-                    <a href="pages/register.html">Đăng ký ngay</a>
-                </td>
-            </tr>
+                            <h2 class="h3 fw-bold mb-3">Quản lý bài thực hành trong một nơi duy nhất.</h2>
+                            <p class="text-white-50 mb-4">
+                                Giao diện được tối giản để tập trung vào đăng nhập, điều hướng và truy cập nhanh các nội dung học tập.
+                            </p>
 
-            <tr>
-                <td colspan="2" align="center" bgcolor="#eeeeee" style="padding: 8px;">
-                    <b>Hoặc đăng nhập bằng</b>
-                </td>
-            </tr>
+                            <div class="security-item">
+                                <span class="security-icon"><i class="bi bi-shield-check"></i></span>
+                                <div>
+                                    <div class="fw-semibold">Bố cục chuyên nghiệp</div>
+                                    <div class="text-white-50 small">Màu sắc tiết chế, dễ đọc và phù hợp phong cách công ty.</div>
+                                </div>
+                            </div>
+                            <div class="security-item">
+                                <span class="security-icon"><i class="bi bi-grid"></i></span>
+                                <div>
+                                    <div class="fw-semibold">Điều hướng rõ ràng</div>
+                                    <div class="text-white-50 small">Sau đăng nhập, người dùng đi thẳng tới menu quản lý nội dung.</div>
+                                </div>
+                            </div>
+                            <div class="security-item">
+                                <span class="security-icon"><i class="bi bi-phone"></i></span>
+                                <div>
+                                    <div class="fw-semibold">Tương thích thiết bị</div>
+                                    <div class="text-white-50 small">Layout Bootstrap hiển thị tốt trên laptop, tablet và điện thoại.</div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-            <tr>
-                <td colspan="2">
-                    <nav class="social-container">
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/google-logo.png">Google</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/facebook.png">Facebook</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/instagram-new.png">Instagram</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/youtube-play.png">YouTube</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/tiktok.png">TikTok</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/douyin.png">Douyin</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/zalo.png">Zalo</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/twitterx.png">X</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/threads.png">Threads</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/reddit.png">Reddit</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/pinterest.png">Pinterest</a>
-                    </nav>
-                </td>
-            </tr>
+        <footer class="footer-note">
+            <div class="container py-3 d-flex flex-wrap justify-content-between gap-2">
+                <span>© 2026 Web Design TVU</span>
+                <span>Hệ thống thực hành HTML, CSS và Bootstrap</span>
+            </div>
+        </footer>
+    </div>
 
-            <tr class="row-sep">
-                <td colspan="2">
-                    <nav class="social-container">
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/facebook-messenger.png">Messenger</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/whatsapp.png">WhatsApp</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/telegram-app.png">Telegram</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/discord.png">Discord</a>
-                    </nav>
-                </td>
-            </tr>
-
-            <tr class="row-sep">
-                <td colspan="2">
-                    <nav class="social-container">
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/linkedin.png">LinkedIn</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/notion.png">Notion</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/github.png">GitHub</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/gitlab.png">GitLab</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/stackoverflow.png">StackOverflow</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/docker.png">Docker Hub</a>
-                    </nav>
-                </td>
-            </tr>
-
-            <tr class="row-sep">
-                <td colspan="2">
-                    <nav class="social-container">
-                        <a href="pages/main.html"><img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-leetcode-is-a-platform-to-help-you-enhance-your-skills-logo-color-tal-revivo.png">LeetCode</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-hackerrank-is-a-technology-hiring-platform-that-is-the-standard-for-assessing-developer-skills-logo-color-tal-revivo.png">HackerRank</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/codecademy.png">CodeForces</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/free-code-camp.png">FreeCodeCamp</a>
-                    </nav>
-                </td>
-            </tr>
-
-            <tr class="row-sep">
-                <td colspan="2">
-                    <nav class="social-container">
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/google-drive.png">Drive</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/icloud.png">iCloud</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/onedrive.png">OneDrive</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/cloudflare.png">Cloudflare</a>
-                    </nav>
-                </td>
-            </tr>
-
-            <tr class="row-sep">
-                <td colspan="2">
-                    <nav class="social-container">
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/shopee.png">Shopee</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/lazada.png">Lazada</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/tiki.png">Tiki</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/netflix.png">Netflix</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/spotify.png">Spotify</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/momo.png">MoMo</a>
-                        <a href="pages/main.html"><img src="https://img.icons8.com/color/24/zalo.png">ZaloPay</a>
-                    </nav>
-                </td>
-            </tr>
-
-        </table>
-
-        <br><br>
-
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

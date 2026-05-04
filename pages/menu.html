@@ -2,97 +2,261 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
-            margin: 0;
             min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f7b2c4, #80d0c7, #ffffff);
-            display: flex;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(247, 178, 196, 0.45), transparent 32rem),
+                linear-gradient(135deg, #f8fafc 0%, #e6f6f3 48%, #fff5f8 100%);
+        }
+
+        .navbar {
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+        }
+
+        .hero {
+            padding: 56px 0 28px;
+        }
+
+        .hero-panel {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 18px;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.13);
+            padding: 34px;
+        }
+
+        .menu-card,
+        .practice-list {
+            border: 0;
+            border-radius: 14px;
+            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09);
+        }
+
+        .menu-card {
+            height: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 42px rgba(15, 23, 42, 0.14);
+        }
+
+        .icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            font-size: 22px;
+            background: #fff0f5;
+            color: #e73c7e;
         }
 
-        .main-table {
-            width: min(700px, 92vw);
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.94);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-        }
-
-        .header-cell {
-            position: relative;
-            background: #ffd6e3;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .header-cell h1 {
-            margin: 0;
-            font-size: 28px;
-            color: #303030;
-        }
-
-        .logout-btn {
-            position: absolute;
-            top: 14px;
-            right: 16px;
-            color: #ffffff;
+        .btn-primary {
             background: #e73c7e;
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
+            border-color: #e73c7e;
         }
 
-        .nav-bar {
-            padding: 22px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 12px;
+        .btn-primary:hover {
+            background: #c82368;
+            border-color: #c82368;
         }
 
-        .nav-bar a {
-            display: block;
-            text-align: center;
-            color: #222;
-            background: #ffffff;
-            border: 1px solid #eeeeee;
-            border-radius: 10px;
+        .practice-list {
+            overflow: hidden;
+        }
+
+        .practice-list .list-group-item {
+            padding: 18px 20px;
+            border-color: #eef2f7;
+        }
+
+        .week-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff0f5;
+            color: #e73c7e;
+            font-weight: 800;
+            flex: 0 0 auto;
+        }
+
+        .quick-link {
+            border: 1px solid #e5e7eb;
+            background: rgba(255, 255, 255, 0.78);
+            border-radius: 12px;
             padding: 14px 16px;
             text-decoration: none;
+            color: #1f2937;
             font-weight: 600;
-            transition: 0.2s;
+            transition: 0.2s ease;
         }
 
-        .nav-bar a:hover {
-            border-color: #e73c7e;
+        .quick-link:hover {
             color: #e73c7e;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(231, 60, 126, 0.15);
+            border-color: #f4a4c4;
+            background: #ffffff;
         }
     </style>
 </head>
 <body>
-    <table class="main-table">
-        <tr>
-            <td class="header-cell">
-                <a href="../index.html" class="logout-btn">Đăng xuất</a>
-                <h1>Chào mừng đến với trang menu</h1>
-            </td>
-        </tr>
-        <tr>
-            <td class="nav-bar">
-                <a href="menu.html">Menu</a>
-                <a href="main.html">Trang chính</a>
-                <a href="myproject.html">Hồ sơ</a>
-                <a href="../110125113/index.html">Buổi thực hành 1</a>
-            </td>
-        </tr>
-    </table>
+    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="menu.html">
+                <img src="../assets/images/MU.png" alt="Logo MU" class="brand-logo">
+                Web Design TVU
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="main.html">Trang chính</a></li>
+                    <li class="nav-item"><a class="nav-link" href="myproject.html">Hồ sơ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#practice-list">Thực hành</a></li>
+                </ul>
+                <a href="../index.html" class="btn btn-outline-danger ms-lg-3">Đăng xuất</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container hero">
+        <section class="hero-panel">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <span class="badge text-bg-light border mb-3">Bảng điều hướng</span>
+                    <h1 class="display-6 fw-bold mb-3">Chào mừng đến với trang menu</h1>
+                    <p class="text-secondary mb-4">
+                        Chọn nhanh trang bạn muốn mở: trang chính, hồ sơ cá nhân, hoặc danh sách các buổi thực hành hằng tuần.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="main.html" class="btn btn-primary px-4">Vào trang chính</a>
+                        <a href="#practice-list" class="btn btn-light border px-4">Xem thực hành</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="p-4 rounded-4 bg-light border">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="fw-semibold">Trạng thái</span>
+                            <span class="badge text-bg-success">Online</span>
+                        </div>
+                        <div class="progress mb-3" role="progressbar" aria-label="Tiến độ hoàn thiện" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: 85%"></div>
+                        </div>
+                        <p class="text-secondary small mb-0">Website đã có trang đăng nhập, menu, trang chính và danh sách thực hành.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row g-4 mt-1">
+            <div class="col-md-4">
+                <div class="card menu-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mb-3"><i class="bi bi-house-door"></i></div>
+                        <h2 class="h5 fw-bold">Trang chính</h2>
+                        <p class="text-secondary small">Mở giao diện chính với thanh điều hướng và nội dung iframe.</p>
+                        <a href="main.html" class="stretched-link fw-semibold text-decoration-none">Mở trang</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card menu-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mb-3"><i class="bi bi-person"></i></div>
+                        <h2 class="h5 fw-bold">Hồ sơ</h2>
+                        <p class="text-secondary small">Xem thông tin cá nhân, dự án và nội dung giới thiệu.</p>
+                        <a href="myproject.html" class="stretched-link fw-semibold text-decoration-none">Mở hồ sơ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card menu-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mb-3"><i class="bi bi-envelope"></i></div>
+                        <h2 class="h5 fw-bold">Liên hệ</h2>
+                        <p class="text-secondary small">Mở trang liên hệ trong hệ thống chính của website.</p>
+                        <a href="style.html" class="stretched-link fw-semibold text-decoration-none">Mở liên hệ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="practice-list" class="mt-4">
+            <div class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-3">
+                <div>
+                    <span class="badge text-bg-light border mb-2">Danh sách học tập</span>
+                    <h2 class="h4 fw-bold mb-1">Các buổi thực hành</h2>
+                    <p class="text-secondary mb-0">Mỗi tuần bạn chỉ cần thêm một dòng mới vào danh sách này.</p>
+                </div>
+                <a href="../110125113/index.html" class="btn btn-outline-primary">
+                    <i class="bi bi-box-arrow-up-right me-1"></i>
+                    Mở buổi mới nhất
+                </a>
+            </div>
+
+            <div class="list-group practice-list">
+                <a href="../110125113/index.html" class="list-group-item list-group-item-action">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="week-badge">01</span>
+                        <div class="flex-grow-1">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <h3 class="h6 fw-bold mb-0">Buổi thực hành 1</h3>
+                                <span class="badge text-bg-success">Đã có</span>
+                            </div>
+                            <p class="text-secondary small mb-0">Trang Home, About, Gallery và Contact.</p>
+                        </div>
+                        <i class="bi bi-chevron-right text-secondary"></i>
+                    </div>
+                </a>
+
+                <!-- Khi có buổi mới, copy mẫu bên dưới rồi sửa số buổi và đường dẫn.
+                <a href="../ten-thu-muc-buoi-2/index.html" class="list-group-item list-group-item-action">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="week-badge">02</span>
+                        <div class="flex-grow-1">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <h3 class="h6 fw-bold mb-0">Buổi thực hành 2</h3>
+                                <span class="badge text-bg-secondary">Mới thêm</span>
+                            </div>
+                            <p class="text-secondary small mb-0">Mô tả ngắn nội dung buổi thực hành.</p>
+                        </div>
+                        <i class="bi bi-chevron-right text-secondary"></i>
+                    </div>
+                </a>
+                -->
+            </div>
+        </section>
+
+        <section class="mt-4">
+            <div class="d-grid d-md-flex gap-3">
+                <a class="quick-link flex-fill" href="portfolio.html">Giới thiệu</a>
+                <a class="quick-link flex-fill" href="main.html">Dashboard</a>
+                <a class="quick-link flex-fill" href="../index.html">Quay về đăng nhập</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
