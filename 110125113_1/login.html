@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        background-image: url("https://www.travinhuni.edu.vn/Portals/0/Anh%20bai%20viet/2023/11/29/anh%20bai%20viet%20(1).jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+        .image-align-left {
+        float: left;
+        margin-right: 10px;
+        background-color:black;
+    }
+
+    .image-align-right {
+        float: right;
+        margin-right: 10px;
+        background-color:black;
+    }
+    img.cangiua{
+        display: block; 
+        margin-left: auto; 
+        margin-right: auto;
+    } 
+
+</style>
+<body>
+    <table border="1" align="center" width="30%" cellpadding="20" cellspacing="0" style="margin-top: 200px;">
+        <tr align="center"`rowspan="2" style="width: 100%;">
+            <colgroup>
+                <col width="100%">
+                <col width="100%">
+            </colgroup>
+            <td colspan="2" style="width: 100%;">
+                <img src="../assets/images/TVU-RGB.png" alt="TVU Logo" class="cangiua" style="width: 100px; height: auto;"><br>
+                <h4 align="center">PHẦN MỀM TIN HỌC</h4>
+                <h4 align="center">ĐÁNH GIÁ KẾT QUẢ RÈN LUYỆN CHO SINH VIÊN CHÍNH QUY</h4>
+                <h4 align="center">TẠI ĐẠI HỌC TRÀ VINH</h4>
+                <form action="/login" method="post">
+                    <input type="email" id="email" name="email" required placeholder="Email" style="width: 90%;">icon<br><br>
+                    <input type="password" id="password" name="password" required placeholder="Mật khẩu" style="width: 90%;">icon<br><br>
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Nhớ mật khẩu</label>
+                    <a href="../pages/menu.html">
+                        <input type="submit" value="Đăng nhập" style="height: 40px; width: 200px; background-color: blue; text-decoration-color: antiquewhite; margin-left: 326.7px;"><br><br>
+                    </a>
+                    <a href="../pages/menu.html">
+                        <input type="submit" value="Sinh viên (đăng nhập bằng Email Microsoft)" style="width: 100%; height: 40px; background-color: blue; color: white;"><br><br>
+                    </a>
+                    <a href="../pages/menu.html">
+                        <input type="submit" value="Giảng viên (đăng nhập bằng Email Microsoft)" style="width: 100%; height: 40px; background-color: red; color: white;"><br><br>
+                    </a>
+                    <a href="regis.html">Quên mật khẩu</a>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
