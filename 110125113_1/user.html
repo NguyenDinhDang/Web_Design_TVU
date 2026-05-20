@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin cá nhân</title>
+</head>
+<body style="background-color: #f1f3f5; font-family: Arial, sans-serif; margin: 0; padding: 40px 20px;">
+
+    <div style="max-width: 820px; margin: 0 auto; background-color: white; border-radius: 30px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding-bottom: 40px;">
+        
+        <div style="background-color: #8ba446; color: black; text-align: center; padding: 25px; font-size: 32px; font-weight: bold; margin-bottom: 40px;">
+            Thông tin cá nhân
+        </div>
+
+        <div style="padding: 0 50px;">
+
+            <div style="display: flex; justify-content: center; margin-bottom: 35px;">
+                <div style="width: 130px; height: 130px; border-radius: 50%; background-color: #e9ecef; border: 2px solid #8ba446; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <span style="color: #6c757d; font-size: 14px;">Ảnh đại diện</span>
+                </div>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Họ tên:</label>
+                <span style="font-size: 18px; color: black;">Đặng Đình Nguyên</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Ngày sinh:</label>
+                <span style="font-size: 18px; color: black;">20/05/2007</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Giới tính:</label>
+                <span style="font-size: 18px; color: black;">Nam</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Địa chỉ:</label>
+                <span style="font-size: 18px; color: black;">Trà Vinh, Việt Nam</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">MSSV:</label>
+                <span style="font-size: 18px; color: black;">110125001</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Lớp:</label>
+                <span style="font-size: 18px; color: black;">DA25TTC</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Số điện thoại:</label>
+                <span style="font-size: 18px; color: black;">0123456789</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Email:</label>
+                <span style="font-size: 18px; color: black;">nguyen@example.com</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Sở trường:</label>
+                <span style="font-size: 18px; color: black;">Thiết kế web, Lập trình web</span>
+            </div>
+
+            <div style="display: flex; margin-bottom: 25px; align-items: flex-start;">
+                <label style="width: 180px; font-size: 18px; font-weight: bold; color: #555;">Mô tả sơ lược:</label>
+                <div style="flex: 1; font-size: 18px; color: black; line-height: 1.5; background-color: #fafafa; padding: 15px; border: 1px solid #eee; border-radius: 8px;">
+                    Tôi là một người yêu thích lập trình web và công nghệ. Mong muốn được học hỏi thêm nhiều kiến thức mới tại trường học.
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 35px;">
+                <a href="regis.html" style="text-decoration: none;">
+                    <button type="button" style="background-color: #8ba446; color: black; font-weight: bold; padding: 10px 40px; cursor: pointer; border: 1px solid #6e8534; border-radius: 6px; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        Quay lại Đăng ký
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            let data = localStorage.getItem('thongTinSinhVien');
+            
+            if (data) {
+                let sinhVien = JSON.parse(data);
+                document.getElementById('viewHoten').textContent = sinhVien.hoten;
+                document.getElementById('viewNgaysinh').textContent = sinhVien.ngaysinh;
+                document.getElementById('viewGioitinh').textContent = sinhVien.gioitinh;
+                document.getElementById('viewDiachi').textContent = sinhVien.diachi;
+                document.getElementById('viewMssv').textContent = sinhVien.mssv;
+                document.getElementById('viewLop').textContent = sinhVien.lop;
+                document.getElementById('viewSdt').textContent = sinhVien.sdt;
+                document.getElementById('viewEmail').textContent = sinhVien.email;
+                document.getElementById('viewSotruong').textContent = sinhVien.sotruong;
+                document.getElementById('viewMota').textContent = sinhVien.mota;
+            }
+        };
+    </script>
+</body>
+</html>

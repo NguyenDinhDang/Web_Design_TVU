@@ -1,152 +1,136 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Thông tin đăng ký</title>
 </head>
-<body bgcolor="lightgray">
-    <br>
-    <table align="center" width="820" cellpadding="0" cellspacing="0" border="0" bgcolor="white" style="border-radius: 30px; overflow: hidden;">
-        <tr align="center">
-            <td bgcolor="green" height="90" align="center" >
-                <font size="7">
-                    <b>Thông tin đăng ký</b>
-                </font>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table width="100%" cellpadding="15" cellspacing="0" border="0">
-                    <tr>
-                        <td width="180" border>
-                            <font size="5">Họ tên:</font>
-                        </td>
-                        <td>
-                            <input type="text" placeholder="Nhập họ tên" size="70" style="border: 0; border-bottom: 1px solid black;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="5">Ngày sinh:</font>
-                        </td>
-                        <td>
-                            <input type="date" size="70" style="border: 0; border-bottom: 1px solid black; width: 90%;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="5">Giới tính:</font>
-                        </td>
-                        <td>
-                            <input type="radio" name="gioitinh"> Nam
-                            <input type="radio" name="gioitinh" style="margin-left: 100px;"> Nữ
-                            <input type="radio" name="gioitinh" style="margin-left: 100px;"> Bảo mật tuyệt đối
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="5">Địa chỉ:</font>
-                        </td>
-                        <td>
-                            <input type="text" placeholder="Nhập địa chỉ" size="70" style="border: 0; border-bottom: 1px solid black;">
-                        </td>
-                    </tr>
+<body style="background-color: #f1f3f5; font-family: Arial, sans-serif; margin: 0; padding: 40px 20px;">
 
-                    <tr>
-                        <td>
-                            <font size="5">MSSV:</font>
-                        </td>
-                        <td>
-                            <input type="text" placeholder="Nhập mã số sinh viên" size="70" style="border: 0; border-bottom: 1px solid black;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="5">Lớp:</font>
-                        </td>
-                        <td>
-                            <select>
-                                <option>DA25TTA</option>
-                                <option>DA25TTB</option>
-                                <option>DA25TTC</option>
-                                <option>DA25TTD</option>
-                                <option>DA25TT-EIP</option>
-                                <option>DA24TTA</option>
-                                <option>DA24TTB</option>
-                                <option>DA24TTC</option>
-                                <option>DA24TTD</option>
-                                <option>DA23TTA</option>
-                                <option>DA23TTB</option>
-                                <option>DA23TTC</option>
-                                <option>DA23TTD</option>
-                                <option>DA22TTA</option>
-                                <option>DA22TTB</option>                                
-                                <option>DA22TTC</option>   
-                                <option>DA22TTD</option>   
-                                <option>DA21TTA</option>   
-                                <option>DA21TTB</option>   
-                                <option>DA21TTC</option>  
-                                <option>DA21TTD</option>    
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="5">Số điện thoại:</font>
-                        </td>
-                        <td>
-                            <input type="text" placeholder="Nhập số điện thoại" size="70" style="border: 0; border-bottom: 1px solid black;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="5">Email:</font>
-                        </td>
-                        <td>
-                            <input type="email" placeholder="Nhập email" size="70" style="border: 0; border-bottom: 1px solid black;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="5">Ảnh đại diện:</font>
-                        </td>
-                        <td>
-                            <input type="file">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="top">
-                            <font size="5">Sở trường:</font>
-                        </td>
-                        <td>
-                            <input type="checkbox"> Web Design
-                            <input type="checkbox"> Lập trình Java
-                            <input type="checkbox"> Lập trình Python
-                            <input type="checkbox"> Lập trình C++ <br>
-                            <input type="checkbox"> Lập trình C#
-                            <input type="checkbox"> Thành thạo Afghanistan
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="top">
-                            <font size="5">Mô tả sơ lược:</font>
-                        </td>
-                        <td>
-                            <textarea rows="8" cols="72"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center">
-                            <br>
-                            <input type="reset" value="Hủy bỏ" style="background-color: green; font-weight: bold; padding: 5px 20px; cursor: pointer;">
-                            <a href ="../pages/menu.html">
-                                <input type="submit" value="Đăng ký" style ="background-color: green; font-weight: bold; padding: 5px 20px; cursor: pointer;">
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    <form action="user.html" method="POST" enctype="multipart/form-data" style="max-width: 820px; margin: 0 auto; background-color: white; border-radius: 30px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding-bottom: 40px;">
+        
+        <h1 style="background-color: #8ba446; color: black; text-align: center; padding: 25px; font-size: 32px; font-weight: bold; margin: 0 0 40px 0;">
+            Thông tin đăng ký
+        </h1>
+
+        <p style="padding: 0 50px; margin: 0;">
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Họ tên:</label>
+                <input type="text" name="hoten" placeholder="Nhập họ tên" style="flex: 1; padding: 5px 0; border: none; border-bottom: 1px solid black; font-size: 16px; outline: none;">
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Ngày sinh:</label>
+                <input type="date" name="ngaysinh" style="flex: 1; padding: 5px 0; border: none; border-bottom: 1px solid black; font-size: 16px; outline: none;">
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Giới tính:</label>
+                <label style="margin-right: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="radio" name="gioitinh" value="nam"> Nam</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="radio" name="gioitinh" value="nu"> Nữ</label>
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Địa chỉ:</label>
+                <input type="text" name="diachi" placeholder="Nhập địa chỉ" style="flex: 1; padding: 5px 0; border: none; border-bottom: 1px solid black; font-size: 16px; outline: none;">
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">MSSV:</label>
+                <input type="text" name="mssv" placeholder="Nhập mã số sinh viên" style="flex: 1; padding: 5px 0; border: none; border-bottom: 1px solid black; font-size: 16px; outline: none;">
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Lớp:</label>
+                <select name="lop" style="flex: 1; padding: 5px 0; border: none; border-bottom: 1px solid black; font-size: 16px; outline: none;">
+                    <option>DA25TTC</option>
+                    <option>DA25TTA</option>
+                    <option>DA25TTB</option>
+                    <option>DA25TTD</option>
+                </select>
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Số điện thoại:</label>
+                <input type="text" name="sdt" placeholder="Nhập số điện thoại" style="flex: 1; padding: 5px 0; border: none; border-bottom: 1px solid black; font-size: 16px; outline: none;">
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Email:</label>
+                <input type="email" name="email" placeholder="Nhập email" style="flex: 1; padding: 5px 0; border: none; border-bottom: 1px solid black; font-size: 16px; outline: none;">
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Ảnh đại diện:</label>
+                <input type="file" name="avatar" style="flex: 1; padding-bottom: 8px; border-bottom: 1px solid black;">
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
+                <label style="width: 180px; font-size: 18px;">Sở trường:</label>
+                <label style="margin-right: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="checkbox" name="sotruong" value="thietke"> Thiết kế web</label>
+                <label style="margin-right: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="checkbox" name="sotruong" value="laptrinh"> Lập trình web</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="checkbox" name="sotruong" value="tiengtrung"> Thành thạo tiếng Trung</label>
+            </p>
+
+            <p style="display: flex; margin: 0 0 25px 0; align-items: flex-start;">
+                <label style="width: 180px; font-size: 18px;">Mô tả sơ lược:</label>
+                <textarea name="mota" rows="5" style="flex: 1; border: 1px solid black; border-radius: 4px; padding: 10px; font-size: 16px; outline: none; resize: none;"></textarea>
+            </p>
+
+            <p style="text-align: center; margin: 35px 0 0 0; display: flex; justify-content: center; gap: 20px;">
+                <input type="reset" value="Hủy bỏ" style="background-color: #8ba446; color: black; font-weight: bold; padding: 10px 30px; cursor: pointer; border: 1px solid #6e8534; border-radius: 6px; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                
+                <a href="user.html" style="text-decoration: none;">
+                    <input type="button" value="Đăng ký" style="background-color: #8ba446; color: black; font-weight: bold; padding: 10px 30px; cursor: pointer; border: 1px solid #6e8534; border-radius: 6px; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                </a>
+            </p>
+
+        </p>
+    </form>
+    <script>
+        document.getElementById('btnDangKy').addEventListener('click', function() {
+            // 1. Lấy dữ liệu từ các ô nhập liệu bằng thuộc tính name
+            let hoTen = document.querySelector('input[name="hoten"]').value;
+            let ngaySinh = document.querySelector('input[name="ngaysinh"]').value;
+            let diaChi = document.querySelector('input[name="diachi"]').value;
+            let mssv = document.querySelector('input[name="mssv"]').value;
+            let lop = document.querySelector('select[name="lop"]').value;
+            let sdt = document.querySelector('input[name="sdt"]').value;
+            let email = document.querySelector('input[name="email"]').value;
+            let moTa = document.querySelector('textarea[name="mota"]').value;
+
+            // Lấy giới tính (vì là radio nên phải tìm ô được tích)
+            let gioitinhInput = document.querySelector('input[name="gioitinh"]:checked');
+            let gioiTinh = gioitinhInput ? gioitinhInput.parentNode.textContent.trim() : "Chưa chọn";
+
+            // Lấy sở trường (tìm các ô checkbox được tích)
+            let soTruongArr = [];
+            document.querySelectorAll('input[name="sotruong"]:checked').forEach(function(item) {
+                soTruongArr.push(item.parentNode.textContent.trim());
+            });
+            let soTruong = soTruongArr.join(', ');
+
+            // 2. Gom tất cả vào một đối tượng (Object) dữ liệu sinh viên
+            let sinhVien = {
+                hoten: hoTen,
+                ngaysinh: ngaySinh,
+                gioitinh: gioiTinh,
+                diachi: diaChi,
+                mssv: mssv,
+                lop: lop,
+                sdt: sdt,
+                email: email,
+                sotruong: soTruong,
+                mota: moTa
+            };
+
+            // 3. Lưu vào kho LocalStorage của trình duyệt dưới dạng chuỗi văn bản
+            localStorage.setItem('thongTinSinhVien', JSON.stringify(sinhVien));
+
+            // 4. Chuyển hướng màn hình sang trang user.html
+            window.location.href = 'user.html';
+        });
+    </script>
+
 </body>
 </html>
