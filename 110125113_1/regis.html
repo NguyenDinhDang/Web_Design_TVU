@@ -26,8 +26,8 @@
 
             <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
                 <label style="width: 180px; font-size: 18px;">Giới tính:</label>
-                <label style="margin-right: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="radio" name="gioitinh" value="nam"> Nam</label>
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="radio" name="gioitinh" value="nu"> Nữ</label>
+                <label style="margin-right: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="radio" name="gioitinh" value="Nam"> Nam</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px;"><input type="radio" name="gioitinh" value="Nữ"> Nữ</label>
             </p>
 
             <p style="display: flex; margin: 0 0 25px 0; align-items: center;">
@@ -79,17 +79,14 @@
 
             <p style="text-align: center; margin: 35px 0 0 0; display: flex; justify-content: center; gap: 20px;">
                 <input type="reset" value="Hủy bỏ" style="background-color: #8ba446; color: black; font-weight: bold; padding: 10px 30px; cursor: pointer; border: 1px solid #6e8534; border-radius: 6px; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                
-                <a href="user.html" style="text-decoration: none;">
-                    <input type="button" value="Đăng ký" style="background-color: #8ba446; color: black; font-weight: bold; padding: 10px 30px; cursor: pointer; border: 1px solid #6e8534; border-radius: 6px; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                </a>
+                <input type="button" id="btnDangKy" value="Đăng ký" style="background-color: #8ba446; color: black; font-weight: bold; padding: 10px 30px; cursor: pointer; border: 1px solid #6e8534; border-radius: 6px; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
             </p>
 
         </p>
     </form>
+
     <script>
         document.getElementById('btnDangKy').addEventListener('click', function() {
-            // 1. Lấy dữ liệu từ các ô nhập liệu bằng thuộc tính name
             let hoTen = document.querySelector('input[name="hoten"]').value;
             let ngaySinh = document.querySelector('input[name="ngaysinh"]').value;
             let diaChi = document.querySelector('input[name="diachi"]').value;
@@ -99,18 +96,15 @@
             let email = document.querySelector('input[name="email"]').value;
             let moTa = document.querySelector('textarea[name="mota"]').value;
 
-            // Lấy giới tính (vì là radio nên phải tìm ô được tích)
             let gioitinhInput = document.querySelector('input[name="gioitinh"]:checked');
             let gioiTinh = gioitinhInput ? gioitinhInput.parentNode.textContent.trim() : "Chưa chọn";
 
-            // Lấy sở trường (tìm các ô checkbox được tích)
             let soTruongArr = [];
             document.querySelectorAll('input[name="sotruong"]:checked').forEach(function(item) {
                 soTruongArr.push(item.parentNode.textContent.trim());
             });
             let soTruong = soTruongArr.join(', ');
 
-            // 2. Gom tất cả vào một đối tượng (Object) dữ liệu sinh viên
             let sinhVien = {
                 hoten: hoTen,
                 ngaysinh: ngaySinh,
@@ -124,10 +118,7 @@
                 mota: moTa
             };
 
-            // 3. Lưu vào kho LocalStorage của trình duyệt dưới dạng chuỗi văn bản
             localStorage.setItem('thongTinSinhVien', JSON.stringify(sinhVien));
-
-            // 4. Chuyển hướng màn hình sang trang user.html
             window.location.href = 'user.html';
         });
     </script>
