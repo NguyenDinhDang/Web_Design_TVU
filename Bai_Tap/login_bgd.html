@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kỳ Thi Tốt Nghiệp THPT - Đăng Nhập</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(160deg, #b8cfe8 0%, #ccdcf0 35%, #dce8f5 70%, #e8f0fb 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 32px 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-icon {
+      width: 60px; height: 60px;
+      background: #1a5bbf;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg {
+      width: 34px; height: 34px;
+      fill: white;
+    }
+
+    .logo-text .top {
+      font-size: 13px;
+      color: #1e4e9e;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+    }
+
+    .logo-text .bottom {
+      font-size: 22px;
+      font-weight: 900;
+      color: #0f3380;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .header-deco svg {
+      width: 110px; height: 88px;
+      opacity: 0.9;
+    }
+
+    /* ── BOOK WRAPPER ── */
+    .book-wrapper {
+      position: relative;
+      width: 90%;
+      max-width: 920px;
+      margin-bottom: 20px;
+    }
+
+    /* left/right page curl decorations */
+    .book-wrapper::before,
+    .book-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 12px; bottom: 0;
+      width: 22px;
+      background: #c5d8ee;
+      border-radius: 4px 0 0 0;
+      z-index: 0;
+    }
+
+    .book-wrapper::before { left: -14px; transform: skewY(-1deg); }
+    .book-wrapper::after  { right: -14px; transform: skewY(1deg); border-radius: 0 4px 0 0; }
+
+    /* ── MAIN CARD ── */
+    .main-card {
+      position: relative;
+      z-index: 1;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 28px rgba(60, 100, 180, 0.13);
+      display: flex;
+      overflow: hidden;
+    }
+
+    .divider {
+      width: 1px;
+      background: #dce9f5;
+      flex-shrink: 0;
+    }
+
+    /* ── LOGIN COLUMN ── */
+    .login-col {
+      flex: 1;
+      padding: 36px 40px 40px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f2e6e;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13.5px;
+      color: #333;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .field label .req { color: #e53e3e; }
+
+    .field input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #c5d5e8;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #333;
+      background: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .field input::placeholder { color: #aab8cc; }
+
+    .field input:focus {
+      border-color: #3a7bd5;
+      box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.12);
+    }
+
+    .input-wrap { position: relative; }
+
+    .input-wrap input { padding-right: 42px; }
+
+    .eye-btn {
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      cursor: pointer;
+      color: #7a9bbf;
+      display: flex; align-items: center;
+      padding: 0;
+    }
+
+    .eye-btn svg { width: 20px; height: 20px; }
+
+    /* captcha */
+    .captcha-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .captcha-box {
+      padding: 8px 20px;
+      border: 1.5px dashed #9db8d8;
+      border-radius: 6px;
+      font-size: 24px;
+      font-weight: 800;
+      color: #2a65c0;
+      letter-spacing: 4px;
+      background: #f0f6ff;
+      user-select: none;
+      min-width: 120px;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+    }
+
+    .refresh-btn {
+      background: none; border: none;
+      cursor: pointer;
+      color: #3a7bd5;
+      display: flex; align-items: center;
+      padding: 4px;
+      transition: transform 0.35s;
+    }
+
+    .refresh-btn:hover { transform: rotate(180deg); }
+
+    .refresh-btn svg { width: 22px; height: 22px; }
+
+    .forgot {
+      font-size: 13px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 22px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .forgot:hover { text-decoration: underline; }
+
+    .btn-login {
+      width: 100%;
+      padding: 12px;
+      background: #1a55bb;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
+    }
+
+    .btn-login:hover { background: #1345a0; }
+
+    .btn-portal {
+      width: 100%;
+      padding: 11px;
+      background: white;
+      color: #1a55bb;
+      border: 2px solid #1a55bb;
+      border-radius: 7px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      transition: background 0.2s;
+    }
+
+    .btn-portal:hover { background: #e8f0fb; }
+
+    /* ── NOTICE COLUMN ── */
+    .notice-col {
+      flex: 1;
+      padding: 36px 32px 40px;
+      background: #f7faff;
+    }
+
+    .notice-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f2e6e;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .notice-text {
+      font-size: 13.5px;
+      color: #333;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 14px 0 24px;
+      font-size: 14px;
+      color: #0f2e6e;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer strong { font-weight: 800; }
+
+    .footer svg { width: 22px; height: 22px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <!-- graduation cap icon -->
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 5L2 12l14 7 14-7-14-7zM2 12v1"/>
+          <path d="M6 14.5v6c0 2.5 4.5 4.5 10 4.5s10-2 10-4.5v-6" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <line x1="28" y1="12" x2="28" y2="20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="28" cy="21" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <div class="top">BỘ GIÁO DỤC VÀ ĐÀO TẠO</div>
+        <div class="bottom">KỲ THI TỐT NGHIỆP THPT</div>
+      </div>
+    </div>
+
+    <!-- decorative illustration -->
+    <div class="header-deco">
+      <svg viewBox="0 0 130 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="65" cy="50" r="40" fill="#c2d8f0" opacity="0.65"/>
+        <circle cx="65" cy="50" r="28" fill="#a8c8e8" opacity="0.5"/>
+        <!-- light bulb -->
+        <path d="M65 28 C55 28 48 36 48 45 C48 52 52 57 57 60 L57 66 L73 66 L73 60 C78 57 82 52 82 45 C82 36 75 28 65 28Z" fill="#3a7bd5" opacity="0.85"/>
+        <rect x="58" y="66" width="14" height="3" rx="1.5" fill="#2a65b0"/>
+        <rect x="59" y="70" width="12" height="3" rx="1.5" fill="#2a65b0"/>
+        <!-- sparkle lines inside bulb -->
+        <line x1="65" y1="36" x2="65" y2="42" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="59" y1="39" x2="62" y2="44" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="71" y1="39" x2="68" y2="44" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <!-- paper plane -->
+        <path d="M105 15 L90 26 L96 29 L95 38 L102 31 L108 34 Z" fill="#3a7bd5" opacity="0.8"/>
+        <!-- gear -->
+        <circle cx="20" cy="22" r="8" stroke="#6a9fd8" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <circle cx="20" cy="22" r="3" stroke="#6a9fd8" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <line x1="20" y1="12" x2="20" y2="15" stroke="#6a9fd8" stroke-width="1.5" opacity="0.5"/>
+        <line x1="20" y1="29" x2="20" y2="32" stroke="#6a9fd8" stroke-width="1.5" opacity="0.5"/>
+        <line x1="10" y1="22" x2="13" y2="22" stroke="#6a9fd8" stroke-width="1.5" opacity="0.5"/>
+        <line x1="27" y1="22" x2="30" y2="22" stroke="#6a9fd8" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- BOOK + MAIN CARD -->
+  <div class="book-wrapper">
+    <div class="main-card">
+
+      <!-- LOGIN FORM -->
+      <div class="login-col">
+        <div class="section-title">ĐĂNG NHẬP</div>
+
+        <div class="field">
+          <label>Số CCCD/CMND/ĐDCN <span class="req">(*)</span></label>
+          <input type="text" placeholder="Số CCCD/CMND/ĐDCN">
+        </div>
+
+        <div class="field">
+          <label>Mã đăng nhập <span class="req">(*)</span></label>
+          <div class="input-wrap">
+            <input type="password" id="pwd-input" placeholder="Mã đăng nhập">
+            <button class="eye-btn" onclick="togglePwd()" aria-label="Hiện/ẩn mật khẩu">
+              <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- CAPTCHA -->
+        <div class="captcha-row">
+          <div class="captcha-box" id="captcha-display">5FJP0</div>
+          <button class="refresh-btn" onclick="refreshCaptcha()" aria-label="Làm mới mã captcha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"/>
+              <polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="field">
+          <label>Mã xác nhận <span class="req">(*)</span></label>
+          <input type="text" placeholder="Mã xác nhận">
+        </div>
+
+        <div class="forgot">Quên mã đăng nhập ?</div>
+
+        <button class="btn-login">Đăng nhập</button>
+        <button class="btn-portal">Đăng nhập Cổng dịch vụ công quốc gia</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- NOTICE -->
+      <div class="notice-col">
+        <div class="notice-title">THÔNG BÁO</div>
+        <p class="notice-text">
+          Thí sinh đăng ký dự thi (ĐKDT) trực tuyến để xét công nhận tốt nghiệp chính thức trên hệ thống từ ngày 24/04/2026 đến 17h00 ngày 05/05/2026.
+        </p>
+        <p class="notice-text">
+          Thí sinh tự do (đã tốt nghiệp THPT, trung cấp) chỉ đăng ký xét tuyển nộp phiếu đăng ký dự thi để xét tuyển về các điểm TNHS để các điểm TNHS nhập thông tin lên hệ thống từ ngày 1/5/2026 đến ngày 20/5/2026.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/>
+    </svg>
+    Hotline <strong>1800 8000 nhánh số 2</strong>
+  </div>
+
+  <script>
+    function togglePwd() {
+      const input = document.getElementById('pwd-input');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    function refreshCaptcha() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let code = '';
+      for (let i = 0; i < 5; i++) {
+        code += chars[Math.floor(Math.random() * chars.length)];
+      }
+      document.getElementById('captcha-display').textContent = code;
+    }
+  </script>
+
+</body>
+</html>
