@@ -56,6 +56,87 @@
         .scroll-horizontal::-webkit-scrollbar-thumb:hover {
             background-color: #999;
         }
+        /* Màu nền vàng nhạt cho toàn bộ khu vực */
+        .section-upcoming {
+            background-color: #fffcf2; 
+            padding: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* Kiểu dáng cho từng thẻ sản phẩm */
+        .card-upcoming {
+            border: none !important;
+            border-radius: 8px;
+            background-color: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+        }
+
+        /* Hiệu ứng nổi lên khi rê chuột */
+        .card-upcoming:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            z-index: 2;
+        }
+
+        /* Xử lý tên sản phẩm: Giới hạn 2 dòng, phần dư hiển thị dấu 3 chấm */
+        .product-title {
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 38px; /* Ép chiều cao cố định cho 2 dòng */
+        }
+
+        .product-title:hover {
+            color: #288ad6; /* Chuyển màu xanh khi hover tên */
+        }
+
+        /* Định dạng giá */
+        .price-new {
+            color: #d0021b;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .price-old {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 12px;
+        }
+
+        /* Nút Sắp mở bán */
+        .btn-sap-mo-ban {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            padding: 6px 0;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-sap-mo-ban:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Icon AI (chữ màu cam) */
+        .ai-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: #e67e22;
+            font-size: 13px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +150,7 @@
             <div class="row align-items-center mb-2">
                 <div class="col-md-2 col-4">
                     <a href="#" class="text-brand-dark d-flex align-items-center gap-2">
-                        <img src="../assets/images/thgedds.png" alt="Thế giới di động" style="height: 60px;">
+                        <img src="../assets/images/logotttt.png" alt="Thế giới di động" style="height: 40px;">
                     </a>
                 </div>
                 <div class="col-md-5 col-8">
