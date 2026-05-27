@@ -14,7 +14,7 @@
             font-size: 14px;
         }
         .bg-brand-yellow {
-            background-color: #ffd400; /* Màu vàng đặc trưng */
+            background-color: #ffd400;
         }
         .text-brand-dark {
             color: #333;
@@ -27,59 +27,75 @@
             font-size: 13px;
             padding: 5px 10px;
         }
-        .card-product {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            transition: box-shadow 0.3s;
-        }
-        .card-product:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .price-text {
-            color: #d0021b;
-            font-weight: bold;
-        }
-        /* Tùy chỉnh thanh cuộn ngang cho sản phẩm */
-        .scroll-horizontal {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding-bottom: 10px;
-        }
-        .scroll-horizontal::-webkit-scrollbar {
-            height: 6px;
-        }
-        .scroll-horizontal::-webkit-scrollbar-thumb {
-            background-color: #ccc;
-            border-radius: 10px;
-        }
-        .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-            background-color: #999;
-        }
+        
         /* Màu nền vàng nhạt cho toàn bộ khu vực */
         .section-upcoming {
             background-color: #fffcf2; 
-            padding: 20px 0;
+            padding: 20px;
             border-radius: 8px;
         }
 
-        /* Kiểu dáng cho từng thẻ sản phẩm */
+        /* --- PHẦN ĐẾM NGƯỢC --- */
+        .timer-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #fde68a;
+        }
+        .timer-box {
+            background-color: #f97316;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .timer-digit {
+            background-color: white;
+            color: #f97316;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .upcoming-time {
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* --- PHẦN SẢN PHẨM --- */
         .card-upcoming {
-            border: none !important;
+            border: 1px solid #f1f5f9 !important;
             border-radius: 8px;
             background-color: #ffffff;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            height: 100%;
         }
 
-        /* Hiệu ứng nổi lên khi rê chuột */
         .card-upcoming:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             transform: translateY(-4px);
             z-index: 2;
         }
 
-        /* Xử lý tên sản phẩm: Giới hạn 2 dòng, phần dư hiển thị dấu 3 chấm */
+        /* Bọc hình ảnh để cố định chiều cao, tránh lệch card */
+        .img-wrapper {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .img-wrapper img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* Xử lý tên sản phẩm */
         .product-title {
             font-size: 14px;
             color: #333;
@@ -89,53 +105,101 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            height: 38px; /* Ép chiều cao cố định cho 2 dòng */
+            height: 40px; /* Ép chiều cao cố định cho 2 dòng */
+            margin-bottom: 8px;
         }
 
         .product-title:hover {
-            color: #288ad6; /* Chuyển màu xanh khi hover tên */
+            color: #288ad6;
         }
 
         /* Định dạng giá */
         .price-new {
             color: #d0021b;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 16px;
+        }
+
+        .price-old-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
         }
 
         .price-old {
             color: #999;
             text-decoration: line-through;
+            font-size: 13px;
+        }
+
+        .discount-badge {
+            color: #d0021b;
             font-size: 12px;
+            font-weight: bold;
         }
 
-        /* Nút Sắp mở bán */
-        .btn-sap-mo-ban {
-            background-color: #f8f9fa;
-            color: #333;
-            border: 1px solid #ddd;
-            font-size: 12px;
-            padding: 6px 0;
-            border-radius: 4px;
-            width: 100%;
-            margin-top: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: background 0.2s;
+        /* Thanh tiến trình số lượng */
+        .stock-progress {
+            background-color: #fecaca;
+            height: 18px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 12px;
         }
-
-        .btn-sap-mo-ban:hover {
-            background-color: #e9ecef;
+        .stock-bar {
+            background-color: #ef4444;
+            height: 100%;
+            border-radius: 10px;
         }
-
-        /* Icon AI (chữ màu cam) */
-        .ai-badge {
+        .stock-text {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            color: #e67e22;
+            top: 0; left: 0; width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 18px;
+        }
+
+        /* Nút MUA NGAY */
+        .btn-mua {
+            background-color: #ffffff;
+            color: #288ad6;
+            border: 1px solid #288ad6;
             font-size: 13px;
             font-weight: bold;
+            padding: 8px 0;
+            border-radius: 4px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .btn-mua:hover {
+            background-color: #288ad6;
+            color: white;
+        }
+
+        .btn-sap-mo-ban {
+            color: #666;
+            border-color: #ccc;
+        }
+        .btn-sap-mo-ban:hover {
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        /* Icon AI */
+        .ai-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #e67e22;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
         }
     </style>
 </head>
@@ -189,12 +253,21 @@
         <section class="bg-white p-3 rounded shadow-sm">
             <h5 class="fw-bold mb-3">Khuyến mãi online</h5>
             
-            <ul class="nav nav-pills mb-3 border-bottom pb-2" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills mb-4 border-bottom pb-2" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active bg-danger text-white rounded-pill px-4 py-1 me-2" type="button">FLASH SALE</button>
+                    <button class="nav-link active bg-white text-white rounded-pill px-4 py-1 me-2" type="button">
+                        <img src="../assets/images/flashsale.png" alt="Flash Sale" style="height: 40px; vertical-align: middle;">
+                    </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-success fw-bold px-3 py-1" type="button">GIẢM ĐẾN 50%</button>
+                    <button class="nav-link text-success fw-bold px-3 py-1" type="button">
+                        <img src="../assets/images/discount50.png" alt="GIẢM ĐẾN 50%" style="height: 40px; vertical-align: middle;">
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-success fw-bold px-3 py-1" type="button">
+                        <img src="../assets/images/onlineOnly.png" alt="Online Only" style="height: 40px; vertical-align: middle;">
+                    </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link text-dark px-3 py-1" type="button">Điện Thoại</button>
@@ -213,154 +286,120 @@
                 </li>
             </ul>
 
-            <div class="bg-light p-2 rounded mb-3 d-inline-flex align-items-center">
-                <span class="me-3 fw-bold text-warning bg-dark p-2 rounded">Chỉ còn: 01 : 25 : 07</span>
-                <span class="text-muted" style="font-size: 13px;">Sắp diễn ra 15:00 | Sắp diễn ra 18:00</span>
-            </div>
-
-            <section class="container mb-4">
-                <div class="section-upcoming px-3 shadow-sm">
+            <div class="section-upcoming shadow-sm">
+                <div class="timer-section">
+                    <div class="timer-box">
+                        <span>Chỉ còn:</span>
+                        <span class="timer-digit">00</span> :
+                        <span class="timer-digit">00</span> :
+                        <span class="timer-digit">16</span>
+                    </div>
+                    <div class="upcoming-time">Sắp diễn ra 15:00</div>
+                    <div class="upcoming-time">Sắp diễn ra 18:00</div>
+                </div>
+                
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
                     
-                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
-                        
-                        <div class="col">
-                            <div class="card card-upcoming p-2 position-relative">
-                                <span class="ai-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> AI</span>
-                                <a href="#" class="text-center pt-3 pb-2">
-                                    <img src="https://via.placeholder.com/150" class="img-fluid w-75" alt="Samsung">
-                                </a>
-                                <div class="card-body p-2 d-flex flex-column">
-                                    <a href="#" class="product-title mb-2">Samsung Galaxy A36 5G 12GB/256GB</a>
-                                    <div class="mt-auto">
-                                        <div class="price-new">8.xxx.000₫</div>
-                                        <div class="price-old">10.110.000₫</div>
-                                        <button class="btn-sap-mo-ban">Sắp mở bán</button>
+                    <div class="col">
+                        <div class="card card-upcoming p-3 position-relative h-100 d-flex flex-column">
+                            <a href="#" class="img-wrapper">
+                                <img src="../assets/images/LonPhone.jpg" alt="Samsung">
+                            </a>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <a href="#" class="product-title">LON PHONE SUPER ULTRA VIP PRO MAX 5G 12GB/256GB</a>
+                                <div class="mt-auto">
+                                    <div class="price-new">8.000.000₫</div>
+                                    <div class="price-old-wrapper">
+                                        <span class="price-old">10.110.000₫</span>
+                                        <span class="discount-badge">-19%</span>
                                     </div>
+                                    <button class="btn btn-mua btn-sap-mo-ban">Sắp mở bán</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col">
-                            <div class="card card-upcoming p-2 position-relative">
-                                <span class="ai-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> AI</span>
-                                <a href="#" class="text-center pt-3 pb-2">
-                                    <img src="https://via.placeholder.com/150" class="img-fluid w-75" alt="Redmi">
-                                </a>
-                                <div class="card-body p-2 d-flex flex-column">
-                                    <a href="#" class="product-title mb-2">Xiaomi Redmi Note 15 Pro 5G 12GB/512GB</a>
-                                    <div class="mt-auto">
-                                        <div class="price-new">1x.xx0.000₫</div>
-                                        <div class="price-old">12.490.000₫</div>
-                                        <button class="btn-sap-mo-ban">Sắp mở bán</button>
+                    <div class="col">
+                        <div class="card card-upcoming p-3 position-relative h-100 d-flex flex-column">
+                            <a href="#" class="img-wrapper">
+                                <img src="../assets/images/iphone30Ultra.webp" alt="Xiaomi">
+                            </a>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <a href="#" class="product-title">Xiaomi IPhone Note 15 Pro 5G 12GB/512GB</a>
+                                <div class="mt-auto">
+                                    <div class="price-new">10.000.000₫</div>
+                                    <div class="price-old-wrapper">
+                                        <span class="price-old">12.490.000₫</span>
+                                        <span class="discount-badge">-9%</span>
                                     </div>
+                                    <button class="btn btn-mua">MUA NGAY</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col">
-                            <div class="card card-upcoming p-2 position-relative">
-                                <a href="#" class="text-center pt-3 pb-2">
-                                    <img src="https://via.placeholder.com/150" class="img-fluid w-75" alt="iPhone">
-                                </a>
-                                <div class="card-body p-2 d-flex flex-column">
-                                    <a href="#" class="product-title mb-2">iPhone 17e 256GB</a>
-                                    <div class="mt-auto">
-                                        <div class="price-new">1x.xx0.000₫</div>
-                                        <div class="price-old">17.990.000₫</div>
-                                        <button class="btn-sap-mo-ban">Sắp mở bán</button>
+                    <div class="col">
+                        <div class="card card-upcoming p-3 position-relative h-100 d-flex flex-column">
+                            <a href="#" class="img-wrapper">
+                                <img src="../assets/images/iphone17.jpg" alt="iPhone">
+                            </a>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <a href="#" class="product-title">iPhone 17 256GB</a>
+                                <div class="mt-auto">
+                                    <div class="price-new">15.000.000₫</div>
+                                    <div class="price-old-wrapper">
+                                        <span class="price-old">17.990.000₫</span>
+                                        <span class="discount-badge">-11%</span>
                                     </div>
+                                    <button class="btn btn-mua">MUA NGAY</button>
                                 </div>
                             </div>
                         </div>
-                        
-                        </div>
-                </div>
-            </section>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone17.jpg" class="card-img-top p-2" alt="iPhone 17 Pro Max">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 17 Pro Max</h6>
-                            <p class="price-text mb-0">36.363.636₫</p>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-upcoming p-3 position-relative h-100 d-flex flex-column">
+                            <a href="#" class="img-wrapper">
+                                <img src="../assets/images/iphone17.jpg" alt="iPhone">
+                            </a>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <a href="#" class="product-title">iPhone 17 256GB (Bản đặc biệt)</a>
+                                <div class="mt-auto">
+                                    <div class="price-new">15.000.000₫</div>
+                                    <div class="price-old-wrapper">
+                                        <span class="price-old">17.990.000₫</span>
+                                        <span class="discount-badge">-11%</span>
+                                    </div>
+                                    <button class="btn btn-mua">MUA NGAY</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone17.jpg" class="card-img-top p-2" alt="iPhone 17 Pro Max">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 17 Pro Max</h6>
-                            <p class="price-text mb-0">36.363.636₫</p>
+
+                    <div class="col">
+                        <div class="card card-upcoming p-3 position-relative h-100 d-flex flex-column">
+                            <a href="#" class="img-wrapper">
+                                <img src="../assets/images/iphone17.jpg" alt="iPhone">
+                            </a>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <a href="#" class="product-title">iPhone 17 256GB</a>
+                                <div class="mt-auto">
+                                    <div class="price-new">15.000.000₫</div>
+                                    <div class="price-old-wrapper">
+                                        <span class="price-old">17.990.000₫</span>
+                                        <span class="discount-badge">-11%</span>
+                                    </div>
+                                    <button class="btn btn-mua">MUA NGAY</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone17.jpg" class="card-img-top p-2" alt="iPhone 17 Pro Max">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 17 Pro Max</h6>
-                            <p class="price-text mb-0">36.363.636₫</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone17.jpg" class="card-img-top p-2" alt="iPhone 17 Pro Max">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 17 Pro Max</h6>
-                            <p class="price-text mb-0">36.363.636₫</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone17.jpg" class="card-img-top p-2" alt="iPhone 17 Pro Max">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 17 Pro Max</h6>
-                            <p class="price-text mb-0">36.363.636₫</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone17.jpg" class="card-img-top p-2" alt="iPhone 17 Pro Max">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 17 Pro Max</h6>
-                            <p class="price-text mb-0">36.363.636₫</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone30Ultra.webp" class="card-img-top p-2" alt="iPhone 30 Ultra Promax Ultimate Super">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 30 Ultra Promax Ultimate Super</h6>
-                            <p class="price-text mb-0">363.636.363₫</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/iphone4.webp" class="card-img-top p-2" alt="iPhone 4s">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 4s</h6>
-                            <p class="price-text mb-0">36₫</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-product h-100 p-2 border-0">
-                        <img src="../assets/images/S24Ultra.png" class="card-img-top p-2" alt="Samsung Galaxy S24 Ultra">
-                        <div class="card-body p-1 text-center">
-                            <h6 class="card-title mb-1" style="font-size: 14px;">Samsung Galaxy S24 Ultra</h6>
-                            <p class="price-text mb-0">1₫</p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
-
     </main>
+
     <footer class="container-fluid ">
         <div class="container mb-4">
             <section class="bg-white p-3 rounded shadow-sm mt-4">
@@ -388,7 +427,8 @@
                 </div>
             </section>
         </div>
-    </main>
+    </footer>
+
     <footer class="bg-white border-top py-4 mt-4" style="font-size: 14px; color: #333;">
         <div class="container">
             <div class="row">
@@ -434,7 +474,6 @@
 Địa chỉ: 128 Trần Quang Khải, P.Tân Định, TP. Hồ Chí Minh. Địa chỉ liên hệ và gửi chứng từ: Lô T2-1.2, Đường D5, P.Tăng Nhơn Phú, TP.Hồ Chí Minh. Điện thoại: 028 38125960. Email: hotrotmdt@thegioididong.com. Chịu trách nhiệm nội dung: Huỳnh Văn Tốt. Đại diện ủy quyền giải quyết các vấn đề liên quan bảo vệ quyền lợi người tiêu dùng: Huỳnh Văn Tốt. Email: hotrotmdt@thegioididong.com. Xem chính sách sử dụng
         </div>
     </footer>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
