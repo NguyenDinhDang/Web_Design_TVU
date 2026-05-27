@@ -53,35 +53,22 @@
             background-color: #ccc;
             border-radius: 10px;
         }
-        /* Chatbot Icon cố định */
-        .chatbot-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #ffd400;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            cursor: pointer;
+        .scroll-horizontal::-webkit-scrollbar-thumb:hover {
+            background-color: #999;
         }
     </style>
 </head>
 <body>
 
     <div class="bg-danger text-white text-center py-1 fw-bold">
-        THỨ TƯ SALE SẬP SÀN - GIẢM ĐẾN 50%++
+        THỨ TƯ SALE SẬP SÀN - GIẢM ĐẾN 50%
     </div>
 
     <header class="bg-brand-yellow py-2">
         <div class="container">
             <div class="row align-items-center mb-2">
                 <div class="col-md-2 col-4">
-                    <h4 class="mb-0 fw-bold"><i class="fa-solid fa-microchip"></i> Store</h4>
+                    <h4 class="mb-0 fw-bold">Thế giới di động</h4>
                 </div>
                 <div class="col-md-5 col-8">
                     <div class="input-group">
@@ -100,55 +87,22 @@
 
             <div class="row d-none d-md-flex">
                 <div class="col-12 d-flex justify-content-between">
-                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-mobile-screen"></i> Điện thoại</a>
-                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-laptop"></i> Laptop</a>
-                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-headphones"></i> Phụ kiện</a>
-                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-regular fa-clock"></i> Smartwatch</a>
-                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-tablet-screen-button"></i> Tablet</a>
-                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-desktop"></i> PC, Màn hình</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Điện thoại</a>
+                    <a href="#" class="text-brand-dark nav-link-custom">Laptop</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Phụ kiện</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Smartwatch</a>
+                    <a href="#" class="text-brand-dark nav-link-custom">Đồng hồ</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Tablet</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Máy tính cũ, thu cũ</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Màn hình, Máy in</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Sim, Thẻ cào</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"> Dịch vụ</a>
                 </div>
             </div>
         </div>
     </header>
 
     <main class="container my-4">
-        
-        <section class="bg-white p-3 rounded shadow-sm mb-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="fw-bold mb-0">Sản phẩm đã xem</h5>
-                <a href="#" class="text-primary text-decoration-none" style="font-size: 13px;">Xóa lịch sử</a>
-            </div>
-            
-            <div class="scroll-horizontal">
-                <div class="card card-product border-0" style="min-width: 250px;">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-4">
-                            <img src="https://via.placeholder.com/80" class="img-fluid rounded-start p-2" alt="...">
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body p-2">
-                                <h6 class="card-title" style="font-size: 13px;">Vivo Y20T</h6>
-                                <p class="card-text text-danger mb-0" style="font-size: 12px;">Ngừng kinh doanh</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-product border-0" style="min-width: 250px;">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-4">
-                            <img src="https://via.placeholder.com/80" class="img-fluid rounded-start p-2" alt="...">
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body p-2">
-                                <h6 class="card-title" style="font-size: 13px;">Samsung Galaxy A07</h6>
-                                <p class="card-text price-text mb-0">3.690.000₫</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-        </section>
-
         <section class="bg-white p-3 rounded shadow-sm">
             <h5 class="fw-bold mb-3">Khuyến mãi online</h5>
             
@@ -163,7 +117,16 @@
                     <button class="nav-link text-dark px-3 py-1" type="button">Điện Thoại</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-dark px-3 py-1" type="button">Apple</button>
+                    <button class="nav-link text-dark px-3 py-1" type="button">Laptop</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark px-3 py-1" type="button">Phụ kiện</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark px-3 py-1" type="button">Đồng hồ</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark px-3 py-1" type="button">PC, Máy in</button>
                 </li>
             </ul>
 
@@ -195,10 +158,22 @@
         </section>
 
     </main>
+    <footer class="container-fluid ">
+        <section class="bg-white text-black p-4 mb-3">
+            <h5 class="fw-bold mb-3">Mọi người cùng tìm kiếm</h5>
+            <session class="bg-blue text-black ">
+                <h5 class="fw-bold mb-3">Mọi người cùng tìm kiếm</h5>
+                <a href="#" class="text-muted me-3">iPhone 14</a>
+                <a href="#" class="text-muted me-3">Samsung Galaxy S23</a>
+                <a href="#" class="text-muted me-3">Laptop Gaming</a>
+                <a href="#" class="text-muted me-3">Apple Watch</a>
+                <a href="#" class="text-muted me-3">Tai nghe Bluetooth</a>
+                <a href="#" class="text-muted me-3">Máy tính bảng</a>
+                <a href="#" class="text-muted me-3">Máy in HP</a>
+            </session>
+        </section>
+    </footer>
 
-    <div class="chatbot-btn">
-        <i class="fa-solid fa-robot fs-4 text-dark"></i>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
