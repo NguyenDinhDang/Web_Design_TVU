@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone Giao Diện Cửa Hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .bg-brand-yellow {
+            background-color: #ffd400; /* Màu vàng đặc trưng */
+        }
+        .text-brand-dark {
+            color: #333;
+            text-decoration: none;
+        }
+        .text-brand-dark:hover {
+            color: #000;
+        }
+        .nav-link-custom {
+            font-size: 13px;
+            padding: 5px 10px;
+        }
+        .card-product {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+        }
+        .card-product:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .price-text {
+            color: #d0021b;
+            font-weight: bold;
+        }
+        /* Tùy chỉnh thanh cuộn ngang cho sản phẩm */
+        .scroll-horizontal {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 10px;
+        }
+        .scroll-horizontal::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scroll-horizontal::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 10px;
+        }
+        /* Chatbot Icon cố định */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #ffd400;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-danger text-white text-center py-1 fw-bold">
+        THỨ TƯ SALE SẬP SÀN - GIẢM ĐẾN 50%++
+    </div>
+
+    <header class="bg-brand-yellow py-2">
+        <div class="container">
+            <div class="row align-items-center mb-2">
+                <div class="col-md-2 col-4">
+                    <h4 class="mb-0 fw-bold"><i class="fa-solid fa-microchip"></i> Store</h4>
+                </div>
+                <div class="col-md-5 col-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control rounded-start-pill" placeholder="Bạn tìm gì...">
+                        <button class="btn btn-light rounded-end-pill border" type="button">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-5 d-none d-md-flex justify-content-end align-items-center gap-3">
+                    <a href="#" class="text-brand-dark"><i class="fa-regular fa-user"></i> Đăng nhập</a>
+                    <a href="#" class="text-brand-dark"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+                    <a href="#" class="text-brand-dark"><i class="fa-solid fa-location-dot"></i> Hồ Chí Minh</a>
+                </div>
+            </div>
+
+            <div class="row d-none d-md-flex">
+                <div class="col-12 d-flex justify-content-between">
+                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-mobile-screen"></i> Điện thoại</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-laptop"></i> Laptop</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-headphones"></i> Phụ kiện</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-regular fa-clock"></i> Smartwatch</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-tablet-screen-button"></i> Tablet</a>
+                    <a href="#" class="text-brand-dark nav-link-custom"><i class="fa-solid fa-desktop"></i> PC, Màn hình</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        
+        <section class="bg-white p-3 rounded shadow-sm mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0">Sản phẩm đã xem</h5>
+                <a href="#" class="text-primary text-decoration-none" style="font-size: 13px;">Xóa lịch sử</a>
+            </div>
+            
+            <div class="scroll-horizontal">
+                <div class="card card-product border-0" style="min-width: 250px;">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-4">
+                            <img src="https://via.placeholder.com/80" class="img-fluid rounded-start p-2" alt="...">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body p-2">
+                                <h6 class="card-title" style="font-size: 13px;">Vivo Y20T</h6>
+                                <p class="card-text text-danger mb-0" style="font-size: 12px;">Ngừng kinh doanh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-product border-0" style="min-width: 250px;">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-4">
+                            <img src="https://via.placeholder.com/80" class="img-fluid rounded-start p-2" alt="...">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body p-2">
+                                <h6 class="card-title" style="font-size: 13px;">Samsung Galaxy A07</h6>
+                                <p class="card-text price-text mb-0">3.690.000₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section class="bg-white p-3 rounded shadow-sm">
+            <h5 class="fw-bold mb-3">Khuyến mãi online</h5>
+            
+            <ul class="nav nav-pills mb-3 border-bottom pb-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active bg-danger text-white rounded-pill px-4 py-1 me-2" type="button">FLASH SALE</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-success fw-bold px-3 py-1" type="button">GIẢM ĐẾN 50%</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark px-3 py-1" type="button">Điện Thoại</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-dark px-3 py-1" type="button">Apple</button>
+                </li>
+            </ul>
+
+            <div class="bg-light p-2 rounded mb-3 d-inline-flex align-items-center">
+                <span class="me-3 fw-bold text-warning bg-dark p-2 rounded">Chỉ còn: 01 : 25 : 07</span>
+                <span class="text-muted" style="font-size: 13px;">Sắp diễn ra 15:00 | Sắp diễn ra 18:00</span>
+            </div>
+
+            <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3">
+                <div class="col">
+                    <div class="card card-product h-100 p-2 border-0">
+                        <img src="https://via.placeholder.com/150" class="card-img-top p-2" alt="OPPO A5">
+                        <div class="card-body p-1 text-center">
+                            <h6 class="card-title mb-1" style="font-size: 14px;">OPPO A5</h6>
+                            <p class="price-text mb-0">4.290.000₫</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card-product h-100 p-2 border-0">
+                        <img src="https://via.placeholder.com/150" class="card-img-top p-2" alt="iPhone 14">
+                        <div class="card-body p-1 text-center">
+                            <h6 class="card-title mb-1" style="font-size: 14px;">iPhone 14 Pro Max</h6>
+                            <p class="price-text mb-0">26.990.000₫</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="chatbot-btn">
+        <i class="fa-solid fa-robot fs-4 text-dark"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
